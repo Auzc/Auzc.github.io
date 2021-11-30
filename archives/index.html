@@ -33,6 +33,10 @@
 
   
   
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -167,15 +171,6 @@
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 10px;">汇编</a>
-    </div>
-  </div>
-
-  
-    
 
   
     
@@ -221,6 +216,18 @@
           <li>
             <a target="_blank" rel="noopener" href="https://www.cnblogs.com/">
               博客园
+            </a>
+          </li>
+          
+          <li>
+            <a target="_blank" rel="noopener" href="https://www.bilibili.com/">
+              Bilibili
+            </a>
+          </li>
+          
+          <li>
+            <a target="_blank" rel="noopener" href="https://www.runoob.com/">
+              菜鸟教程
             </a>
           </li>
           
@@ -298,6 +305,27 @@
 
 
 
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'ad802f0b906bf1885606',
+      clientSecret: '8436fc818a1c675a9f716bd0d8c8a3903d3e36f2',
+      repo: 'Auzc.github.io',
+      owner: 'Auzc',
+      admin: ['Auzc'],
+      id: md5(window.location.pathname),
+      distractionFreeMode: false,
+      language: 'zh-CN',
+      pagerDirection: 'last'
+    });
+    gitalk.render('comments');
+  </script>
 
 
 
