@@ -322,7 +322,7 @@
 </article>
 
 
-  <article id="post-汇编实验3-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-hello-blogs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -330,149 +330,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/30/%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C3-2/">汇编实验3_2</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-11-30T07:18:11.000Z" itemprop="datePublished">2021年11月30日</time>
-</span>
-      
-      
-      
-<a href="/2021/11/30/%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C3-2/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p>试用子程序实现以下要求。<br>题目：从键盘接收若干个一位十进制数值（0~9），并以十进制数据形式显示其和。<br>要求：（1）用子程序实现一位十进制数值的输入；<br>     （2）当用户未输入数值，直接回车时，结束输入；<br>     （3）输出的数据为多位十进制数据，而机器内部计算的和是十六进制形式，需要进行<br>数制转换，然后以字符串的形式输出结果；<br>     （4）程序中要求有必要的提示信息。<br>例如：用户在提示信息下输入三个数值：<br>Please input a number：5<br>             Please input a number：3<br>             Please input a number：4<br>程序显示运算结果<br>       The sum is：12</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">X    DW 0	;暂存输入值和</span><br><span class="line">INMESS   DB <span class="string">&#x27;PLEASE INPUT A NUM:$&#x27;</span>,10,13</span><br><span class="line">OUTMESS  DB <span class="string">&#x27;RESULT:$&#x27;</span></span><br><span class="line">DATA ENDS</span><br><span class="line">CODE SEGMENT</span><br><span class="line">    ASSUME CS:CODE,DS:DATA</span><br><span class="line">START: MOV AX,DATA</span><br><span class="line">       MOV DS,AX</span><br><span class="line"></span><br><span class="line">CIN:	   </span><br><span class="line">       LEA DX,INMESS	;提示信息RESULT:</span><br><span class="line">	   MOV AH,09H</span><br><span class="line">	   INT 21H</span><br><span class="line">	   MOV AH,01H	;输入NUM</span><br><span class="line">	   INT 21H</span><br><span class="line">	   CMP AL,0DH	;判断回车</span><br><span class="line">	   JE COUT</span><br><span class="line">	   MOV AH,0</span><br><span class="line">       SUB AL,30H	   </span><br><span class="line">	   ADD AX,X</span><br><span class="line">	   MOV X,AX</span><br><span class="line">	   JMP CIN</span><br><span class="line">	   </span><br><span class="line">COUT:</span><br><span class="line">	   </span><br><span class="line">	   LEA DX,OUTMESS	;提示信息RESULT:</span><br><span class="line">	   MOV AH,09H</span><br><span class="line">	   INT 21H</span><br><span class="line">	   ;十六进制转十进制</span><br><span class="line">	   MOV AX,X</span><br><span class="line">	   MOV BL,0AH</span><br><span class="line">	   DIV BL</span><br><span class="line">	   ADD AL,30H</span><br><span class="line">	   ADD AH,30H</span><br><span class="line">	   MOV BL,AL</span><br><span class="line">	   MOV BH,AH</span><br><span class="line">	   </span><br><span class="line">	   MOV DL,BL		;打印结果</span><br><span class="line">	   MOV AH,02H</span><br><span class="line">	   INT 21H</span><br><span class="line">	   MOV DL,BH</span><br><span class="line">	   MOV AH,02H</span><br><span class="line">	   INT 21H</span><br><span class="line"></span><br><span class="line">	  MOV AX,4C00H</span><br><span class="line">	  INT 21H</span><br><span class="line">CODE ENDS</span><br><span class="line">END START</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="http://auzc.github.io/index.html">http://auzc.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-汇编实验3-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/30/%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C3-1/">汇编实验3_1</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-11-30T05:53:51.000Z" itemprop="datePublished">2021年11月30日</time>
-</span>
-      
-      
-      
-<a href="/2021/11/30/%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C3-1/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><p>已知无符号字数组LIST的第一个字数据为其元素个数，其后数据按大小关系排序保存。试将某无符号字数据X插入数组LIST的正确位置，并修改元素个数。<br>编程提示：<br>该程序中要将X插入递增数组，需要和数组中每一个数据值进行大小比较，直至找到大于X的元素。<br>数据比较的方式：（1）从前向后比较：找到合适位置后，再移动其后元素；<br>               （2）从后向前比较：比较到不合适，直接移动该元素，直到找到合适位置，刚好腾出X的保存空间；</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">LIST DW 5H,31H,33H,35H,37H,39H ;1 3 5 7 9	使用这几个值的目的是让过程显化</span><br><span class="line">X    DW 0	;暂存输入值</span><br><span class="line">MESS DB <span class="string">&#x27;13579$&#x27;</span></span><br><span class="line">INMESS   DB 10,13,<span class="string">&#x27;PLEASE INPUT A NUM:$&#x27;</span></span><br><span class="line">OUTMESS  DB 10,13,<span class="string">&#x27;RESULT:$&#x27;</span></span><br><span class="line">DATA ENDS</span><br><span class="line">CODE SEGMENT</span><br><span class="line">    ASSUME CS:CODE,DS:DATA</span><br><span class="line">START: MOV AX,DATA</span><br><span class="line">       MOV DS,AX</span><br><span class="line">	   </span><br><span class="line">	   LEA DX,MESS	;提示信息13579</span><br><span class="line">	   MOV AH,09H</span><br><span class="line">	   INT 21H</span><br><span class="line"></span><br><span class="line">	   LEA DX,INMESS	;提示信息PLEASE INPUT A NUM:</span><br><span class="line">	   MOV AH,09H</span><br><span class="line">	   INT 21H</span><br><span class="line"></span><br><span class="line">	   MOV AH,01H	;输入NUM</span><br><span class="line">	   INT 21H</span><br><span class="line">	   MOV AH,0 </span><br><span class="line">	   MOV X,AX</span><br><span class="line">	   </span><br><span class="line">	   LEA DX,OUTMESS	;提示信息RESULT:</span><br><span class="line">	   MOV AH,09H</span><br><span class="line">	   INT 21H</span><br><span class="line">	   </span><br><span class="line">	   LEA BX,LIST</span><br><span class="line">	   MOV CX,[BX]</span><br><span class="line">	   MOV AX,X		;大部分时间栽到这里了，一直不成功。因为上面的打印提示信息改变了AX的值，导致下面错误引用，添加了个X，暂存数值</span><br><span class="line">	  </span><br><span class="line">COMPARE:</span><br><span class="line">	   ADD BX,2</span><br><span class="line">       CMP AX,[BX]</span><br><span class="line">	   JC CHANGE    ;当有进位时跳转到CHANGE循环（交换数字循环），不再回来</span><br><span class="line">	   LOOP COMPARE</span><br><span class="line">	   </span><br><span class="line">CHANGE:   </span><br><span class="line">	  XCHG AX,[BX]</span><br><span class="line">      ADD BX,2</span><br><span class="line">	  LOOP CHANGE    ;每循环一次寄存器CX的值减一,CX的值为零跳出循环</span><br><span class="line"></span><br><span class="line">	  MOV [BX],AX</span><br><span class="line">	  INC WORD PTR LIST  ;将LIST长度加一</span><br><span class="line">	  </span><br><span class="line">	  ;显化结果部分</span><br><span class="line">	  LEA BX,LIST</span><br><span class="line">	  MOV CX,[BX]</span><br><span class="line">PRINT:</span><br><span class="line">	  ADD BX,2</span><br><span class="line">      MOV DL,[BX]</span><br><span class="line">	  MOV AH,02H</span><br><span class="line">	  INT 21H</span><br><span class="line">	  LOOP PRINT</span><br><span class="line">	</span><br><span class="line">	  </span><br><span class="line">	  MOV AX,4C00H</span><br><span class="line">	  INT 21H</span><br><span class="line">CODE ENDS</span><br><span class="line">END START</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="http://auzc.github.io/index.html">http://auzc.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/29/hello-world/">Hexo博客教程（备用）</a>
+      <a class="p-name article-title" href="/2021/11/29/hello-blogs/">Hexo博客教程（备用）</a>
     </h1>
   
 
@@ -488,7 +346,7 @@
       
       
       
-<a href="/2021/11/29/hello-world/#comments" class="article-comment-link">
+<a href="/2021/11/29/hello-blogs/#comments" class="article-comment-link">
   
   <i class="fa fa-commt"></i>
   留言
@@ -567,11 +425,7 @@
           </li>
         
           <li>
-            <a href="/2021/11/30/%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C3-2/">汇编实验3_2</a>
-          </li>
-        
-          <li>
-            <a href="/2021/11/30/%E6%B1%87%E7%BC%96%E5%AE%9E%E9%AA%8C3-1/">汇编实验3_1</a>
+            <a href="/2021/11/29/hello-blogs/">Hexo博客教程（备用）</a>
           </li>
         
       </ul>
@@ -587,7 +441,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年11月</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年11月</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -597,7 +451,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E7%BC%96/" rel="tag">汇编</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -753,5 +607,5 @@
 
 
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":300,"height":600},"mobile":{"show":"ture"},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
