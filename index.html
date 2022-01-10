@@ -88,7 +88,7 @@
 
       <div class="outer">
         <section id="main">
-  <article id="post-CTFHub-信息泄露" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <article id="post-攻防世界-新手区" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -96,7 +96,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/30/CTFHub-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/">CTFHub_信息泄露</a>
+      <a class="p-name article-title" href="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/">攻防世界-新手区</a>
     </h1>
   
 
@@ -107,12 +107,98 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-11-30T14:08:31.000Z" itemprop="datePublished">2021年11月30日</time>
+  <time class="dt-published" datetime="2022-01-09T07:29:50.000Z" itemprop="datePublished">2022年01月09日</time>
 </span>
       
       
       
-<a href="/2021/11/30/CTFHub-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/#comments" class="article-comment-link">
+<a href="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><b>攻防世界-新手区 部分习题 已通关</b></p>
+<h3 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h3><p>题目介绍：你知道index.php的备份文件名吗？<br><b>常见的备份文件后缀名有: .git .svn .swp .svn .~ .bak .bash_history</b><br>使用dirsearch目录扫描工具</p>
+<h3 id="simple-php"><a href="#simple-php" class="headerlink" title="simple_php"></a>simple_php</h3><p>题目介绍：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">show_source(__FILE__);</span><br><span class="line">include(<span class="string">&quot;config.php&quot;</span>);</span><br><span class="line"><span class="variable">$a</span>=@<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=@<span class="variable">$_GET</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$a</span>==0 and <span class="variable">$a</span>)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(is_numeric(<span class="variable">$b</span>))&#123;</span><br><span class="line">    <span class="built_in">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$b</span>&gt;1234)&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag2</span>;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>对于a=0且为真，但a=0时为false，可知a为str类型时的0符合条件。<br>is_numeric要求b不为数字，且b要大于1234，此时由于PHP代码弱类型的特性，所有可以让b等于一个大于1234的数字，再在后面随便加点字母变成str类型。</p>
+<p><code>/?a=%270%27&amp;b=34563a</code></p>
+<h3 id="xff-referer"><a href="#xff-referer" class="headerlink" title="xff_referer"></a>xff_referer</h3><p>题目介绍：X-Forwarded-For和HTTP Referer受限制</p>
+<p>有关X-Forwarded-For和Referer的知识：</p>
+<p>（1）X-Forwarded-For:简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了HTTP 代理或者负载均衡服务器时才会添加该项。xff 是http的拓展头部，作用是使Web服务器获取访问用户的IP真实地址（可伪造）。由于很多用户通过代理服务器进行访问，服务器只能获取代理服务器的IP地址，而xff的作用在于记录用户的真实IP，以及代理服务器的IP。格式为：X-Forwarded-For: 本机IP, 代理1IP, 代理2IP, 代理2IP</p>
+<p>（2）HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的，服务器基此可以获得一些信息用于处理。referer 是http的拓展头部，作用是记录当前请求页面的来源页面的地址。服务器使用referer确认访问来源，如果referer内容不符合要求，服务器可以拦截或者重定向请求。</p>
+<p>先尝试了<b>Fiddler伪造</b><br><img src="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/fiddler1.jpg"><br><img src="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/fiddler2.jpg"></p>
+<p>然后尝试了<b>burpsuite伪造</b><br><img src="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/burp.jpg"></p>
+<h3 id="command-execution"><a href="#command-execution" class="headerlink" title="command_execution"></a>command_execution</h3><p>1.ping一下本地，成功。<br><img src="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/ping1.jpg"><br>2.ping本地的同时搜索一下flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 |find / -name <span class="string">&quot;*.txt&quot;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/ping2.jpg"></p>
+<p>本题没有waf，可以篡改网站</p>
+<p><b>WAF简介</b>：</p>
+<p>Web应用防护系统（也称为：网站应用级入侵防御系统。英文：Web Application Firewall，简称：WAF）。利用国际上公认的一种说法：Web应用防火墙是通过执行一系列针对HTTP/HTTPS的安全策略来专门为Web应用提供保护的一款产品。</p>
+
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://auzc.github.io/index.html">http://auzc.github.io/index.html</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-CTFHub-信息泄露" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/06/CTFHub-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/">CTFHub_信息泄露</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-01-06T14:08:31.000Z" itemprop="datePublished">2022年01月06日</time>
+</span>
+      
+      
+      
+<a href="/2022/01/06/CTFHub-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/#comments" class="article-comment-link">
   
   <i class="fa fa-commt"></i>
   留言
@@ -128,7 +214,11 @@
 <h2 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h2><p>PHPINFO页面，包含了服务器PHP当前状态的大量信息，包括PHP的编译选项、启用拓展、PHP版本信息、服务器信息、环境变量配置、HTTP头和PHP授权信息等<br>Ctrl+F搜索Flag</p>
 <h2 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h2><h3 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h3><p>御剑扫描<br>下载文件<br>网页进入flag_XXXXXXX.txt</p>
 <h3 id="bak文件"><a href="#bak文件" class="headerlink" title="bak文件"></a>bak文件</h3><p>/index.php.bak</p>
-<h3 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h3><h3 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h3>
+<h3 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h3><p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。</p>
+<p>临时文件是在编辑文本时就会创建的文件，如果程序正常退出，临时文件自动删除，如果意外退出就会保留，文件名为 .filename.swp，（第一次产生的交换文件名为“.filename.txt.swp”；再次意外退出后，将会产生名为“.filename.txt.swo”的交换文件；而第三次产生的交换文件则为“.filename.txt.swn”）</p>
+<p>访问.index.php.swp</p>
+<h3 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h3><p>直接访问（URL加/.DS_Store）<br>用Hexworkshop打开<br>找到flag,请求文件</p>
+
         
         
           <blockquote id="copyright">
@@ -170,7 +260,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/30/CTFHub-HTTP%E5%8D%8F%E8%AE%AE/">CTFHub_HTTP协议</a>
+      <a class="p-name article-title" href="/2022/01/06/CTFHub-HTTP%E5%8D%8F%E8%AE%AE/">CTFHub_HTTP协议</a>
     </h1>
   
 
@@ -181,12 +271,12 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-11-30T13:30:00.000Z" itemprop="datePublished">2021年11月30日</time>
+  <time class="dt-published" datetime="2022-01-06T14:08:31.000Z" itemprop="datePublished">2022年01月06日</time>
 </span>
       
       
       
-<a href="/2021/11/30/CTFHub-HTTP%E5%8D%8F%E8%AE%AE/#comments" class="article-comment-link">
+<a href="/2022/01/06/CTFHub-HTTP%E5%8D%8F%E8%AE%AE/#comments" class="article-comment-link">
   
   <i class="fa fa-commt"></i>
   留言
@@ -205,89 +295,6 @@
 <h2 id="302跳转"><a href="#302跳转" class="headerlink" title="302跳转"></a>302跳转</h2><p>Fiddler看返回</p>
 <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>Fiddler看返回改Cookie<br>admin=1</p>
 <h2 id="基础认证"><a href="#基础认证" class="headerlink" title="基础认证"></a>基础认证</h2><h2 id="响应包源代码"><a href="#响应包源代码" class="headerlink" title="响应包源代码"></a>响应包源代码</h2><p>看源代码即可</p>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="http://auzc.github.io/index.html">http://auzc.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li></ul>
-
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-CTF介绍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/30/CTF%E4%BB%8B%E7%BB%8D/">CTF比赛模式介绍</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-11-30T13:03:09.000Z" itemprop="datePublished">2021年11月30日</time>
-</span>
-      
-      
-      
-<a href="/2021/11/30/CTF%E4%BB%8B%E7%BB%8D/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  留言
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="AwD-攻防模式"><a href="#AwD-攻防模式" class="headerlink" title="AwD-攻防模式"></a>AwD-攻防模式</h3><p>Attack with Defense(AwD)全称攻防模式，在攻防模式CTF赛制中，参赛队伍连接到同一个网络空间。主办方会预先为每个参赛队分配要防守的主机，该主机称之为GameBox，每个队伍之间的GameBox配置及漏洞是完全一致的，选手需要防护自己的GameBox不被攻击的同时挖掘漏洞并攻击对手服务来得分。在AwD中主办方会运行一个名为Checker的程序定时检测选手的GameBox的运行状态。若检测到状态不对则判定该GameBox宕机，按照规则扣除一定分数。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续24至48小时左右），同时也比团队之间的分工配合与合作。</p>
-<p>AwD通常仅包含Web及Pwn两种类型的题目。每个队伍可能会分到多个GameBox，随着比赛的进行，最早的GameBox可能会下线，同时会上线新的GameBox。</p>
-<h3 id="AWP-攻防增强"><a href="#AWP-攻防增强" class="headerlink" title="AWP-攻防增强"></a>AWP-攻防增强</h3><p>Attack Defense Plus(ADP)全称攻防增强模式，在该模式下中，参赛队伍连接到同一个网络空间。主办方会在平台上放置题目，选手需要登录到平台获得题目信息</p>
-<p>攻击模式下，平台会给出题目的访问链接，选手按照解题模式做题提交flag即可完成攻击，当完成攻击后， 每轮计算分数时均会计算该题目的攻击得分。</p>
-<p>防御模式下，选手需要自行挖掘题目的漏洞，并制作漏洞补丁包上传至平台，之后点击验证。验证时平台会新建一个完全干净的题目环境，使用预置的Exploit进行攻击，若攻击成功当验证通过之后（即已经完成修补），每轮计算分数均会认为该题目已防御。</p>
-<p>也就是说，对于每个题目，仅需要攻击成功一次，防御成功一次，该题就可以认为已完成，后续无需进行关注。</p>
-<p>ADP通常仅包含Web及Pwn两种类型的题目。随着比赛的进行，最早的题目可能会下线，后续也有可能会上线新的题目。</p>
-<p>ADP相较于AwD来说，选手无须编写批量攻击脚本，也无需关注题目的环境是否被攻击，是否服务异常等等，要做的只是攻击一次，防御一次，选手可以有更多的时间聚焦于还未完成的题目。从主办方的角度来说，大大减轻了比赛的硬件成本和运维成本。</p>
-<h3 id="RHG-自动化-AI自动化"><a href="#RHG-自动化-AI自动化" class="headerlink" title="RHG-自动化[ AI自动化]"></a>RHG-自动化[ AI自动化]</h3><p>Robo Hacking Game(RHG)该利用人工智能或是AI或是自动化攻击程序来全自动的挖掘并利用漏洞，考验选手对于漏洞理解以及工程化能力。比赛开始前(一般为1-4周左右)主办方会给出测试环境以及相关接口文档。选手需要编写自动化程序来请求接口获取题目相关信息，该类程序通常称之为bot，在程序中全自动访问并挖掘目标漏洞，完成利用漏洞攻击并获取flag的过程。获取到的flag也由程序自动化提交。RHG因为是由bot全自动进行工作，所以比赛开始即可视为结束。剩下的一切全看参赛选手编写的自动化bot的工作情况。</p>
-<p>比赛过程中不允许选手对bot进行任何的操作(包括debug/patch等等)。选手仅能看到自己的bot完成了哪些题。目前的得分情况等等。</p>
-<h3 id="RW-真实世界"><a href="#RW-真实世界" class="headerlink" title="RW-真实世界"></a>RW-真实世界</h3><p>Real World(RW) 首次于2018年长亭科技主办的RealWorldCTF中出现，该赛制着重考察选手在面对真实的环境下的漏洞挖掘与利用能力。通常RW模式出题也会围绕着能够应用于真实渗透攻击当中的漏洞，一般来说RW常见题型为VM/Docker逃逸、针对浏览器的攻击、针对IoT/Car等设备的攻击，Web类攻击等等 在RW赛制中会有一个Show Time，当选手认为自己已经可以完成题目时，选手可以在比赛平台上提交展示申请，由工作人员根据申请先后顺序进行展示排期。选手展示之前需要上台并连接相关网络，同时现场大屏会切换至目标的正常页面。选手确认连接并测试OK之后开始计时。一般情况下上台攻击的时间为5分钟，选手一旦完成攻击现场大屏幕会实时看到攻击的效果，此时裁判会根据效果是否符合题目要求来判定该题是否完成。如5在攻击时间内依然未能看到展示效果则认为本次攻击失败。现如今为了防止选手恶意排期。通常会有一个队伍总展示次数(例如在2019年数字经济云安全公测大赛中每个队伍只允许上台展示30次)，选手也需要尽可能保证上台之后攻击的成功率</p>
-<p>举个例子。题目要求需要攻击位于比赛网络中的某个网站并将首页替换为包含队伍名称的页面。题目给出该网站的一些信息(源代码/数据库等等)，选手经过本地挖掘漏洞之后，提交展示申请，排期到了之后进行上台展示。注意，因为RW模式是以展示效果来作为题目是否完成的准则，所以在RW模式中并不存在Flag。</p>
-<h3 id="KoH-抢占山头"><a href="#KoH-抢占山头" class="headerlink" title="KoH-抢占山头"></a>KoH-抢占山头</h3><p>King of Hill(KoH)是近些年新衍生的一种赛制。该赛制有点类似于AwD，但是又和AwD有些不一样。选手面对的是一个黑盒的目标，需要先挖掘漏洞并利用漏洞控制目标。将自己的队伍标识(队伍名称或是Token之类)写入到指定文件。随后在该主机上进行加固等操作防止其他队伍攻击，主办方会定期去检查标识文件，根据文件中的队伍标识来判定本回合分数给予哪个队伍。可以看出KoH也是一种对抗极为激烈的赛制，同时考察选手的渗透能力及防御加固能力。</p>
-<h3 id="Mix"><a href="#Mix" class="headerlink" title="Mix"></a>Mix</h3><p>混合模式结合了以上多种模式，现如今单一的赛制已经无法满足比赛及选手的参赛需求，所以大部分比赛会同时以多个模式进行比赛。例如参赛队伍通过解题(Jeopardy)可以获取一些初始分数，然后通过攻防对抗(AwD)进行得分增减的零和游戏，最终以得分高低分出胜负。</p>
-<p><a target="_blank" rel="noopener" href="https://www.wolai.com/ctfhub/mmJYyc569kAXHvfam4qont">来源</a></p>
 
         
         
@@ -360,6 +367,27 @@
 <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="生成新博客"><a href="#生成新博客" class="headerlink" title="生成新博客"></a>生成新博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h4 id="内容设置"><a href="#内容设置" class="headerlink" title="内容设置"></a>内容设置</h4><p><b>粗体</b></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;粗体&lt;/b&gt;</span><br></pre></td></tr></table></figure>
+<p><i>斜体</i></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i&gt;斜体&lt;/i&gt;</span><br></pre></td></tr></table></figure>
+
+<p><del>删除体</del></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;del&gt;删除体&lt;/del&gt;</span><br></pre></td></tr></table></figure>
+
+<p><ins>插入字</ins></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ins&gt;插入字&lt;/ins&gt;</span><br></pre></td></tr></table></figure>
+
+<p><sup>上标字</sup>123</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;sup&gt;上标字&lt;/sup&gt;123</span><br></pre></td></tr></table></figure>
+
+<p><code>强调字体</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`强调字体` </span><br></pre></td></tr></table></figure>
+
+<p style="color: #FF0000;">红色</p>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=<span class="string">&quot;color: #FF0000;&quot;</span>&gt;红色&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://benpaodewoniu.github.io/2020/01/27/hexo12/">更多内容设置</a></p>
 <h3 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
@@ -413,15 +441,15 @@
       <ul>
         
           <li>
-            <a href="/2021/11/30/CTFHub-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/">CTFHub_信息泄露</a>
+            <a href="/2022/01/09/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E6%96%B0%E6%89%8B%E5%8C%BA/">攻防世界-新手区</a>
           </li>
         
           <li>
-            <a href="/2021/11/30/CTFHub-HTTP%E5%8D%8F%E8%AE%AE/">CTFHub_HTTP协议</a>
+            <a href="/2022/01/06/CTFHub-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/">CTFHub_信息泄露</a>
           </li>
         
           <li>
-            <a href="/2021/11/30/CTF%E4%BB%8B%E7%BB%8D/">CTF比赛模式介绍</a>
+            <a href="/2022/01/06/CTFHub-HTTP%E5%8D%8F%E8%AE%AE/">CTFHub_HTTP协议</a>
           </li>
         
           <li>
@@ -441,7 +469,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年11月</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年11月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -467,19 +495,31 @@
         
           <li>
             <a target="_blank" rel="noopener" href="https://guanshunxin.github.io/">
-              管大爷
+              617留守儿童
             </a>
           </li>
           
           <li>
             <a target="_blank" rel="noopener" href="https://zhangzhihao-blog.github.io/">
-              志豪geigei
+              计科第一卷
             </a>
           </li>
           
           <li>
             <a target="_blank" rel="noopener" href="https://yyhhhhhhhhh.github.io/">
-              华子
+              506候门人
+            </a>
+          </li>
+          
+          <li>
+            <a target="_blank" rel="noopener" href="http://berryalen.GitHub.io/">
+              飞飞
+            </a>
+          </li>
+          
+          <li>
+            <a target="_blank" rel="noopener" href="http://i-ron.cn/">
+              师傅
             </a>
           </li>
           
@@ -511,7 +551,7 @@
         </p>
       
       <p>
-        <span>Copyright &copy; 2021 Auzc.</span>
+        <span>Copyright &copy; 2022 Auzc.</span>
         <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
         
             <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
@@ -595,5 +635,5 @@
 
 
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?51b09a3af6e566628ae1b6287f877a23"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
