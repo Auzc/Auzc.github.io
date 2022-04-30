@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>AcWing | Alloc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="正经人谁写日记啊">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="Alloc" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Alloc</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+          <a class="main-nav-link" href="/atom.xml"><i class="fa fa-rss"></i> 订阅</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AcWing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      AcWing
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-02-28T09:32:51.000Z" itemprop="datePublished">2022年02月28日</time>
+</span>
+      
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/02/28/AcWing/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="16-替换空格"><a href="#16-替换空格" class="headerlink" title="16. 替换空格"></a>16. 替换空格</h3><p>请实现一个函数，把字符串中的每个空格替换成”%20”。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    string replaceSpaces<span class="token punctuation">(</span>string <span class="token operator">&amp;</span>str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        string str1<span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>str.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">str1</span><span class="token operator">+=</span><span class="token string">"%20"</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>else <span class="token assign-left variable">str1</span><span class="token operator">+=</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> str1<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="17-从尾到头打印链表"><a href="#17-从尾到头打印链表" class="headerlink" title="17. 从尾到头打印链表"></a>17. 从尾到头打印链表</h3><p>输入一个链表的头结点，按照 从尾到头 的顺序返回节点的值。<br>返回的结果用数组存储。</p>
+<h2 id="蓝桥杯模块"><a href="#蓝桥杯模块" class="headerlink" title="蓝桥杯模块"></a>蓝桥杯模块</h2><h3 id="1204-错误票据"><a href="#1204-错误票据" class="headerlink" title="1204. 错误票据"></a>1204. 错误票据</h3><p>关键点：定行不定量输入</p>
+<p>我的方法：用字符串getline(cin,str);substr截取；atoi(str.c_str())转为数字；</p>
+<p>曲折：i&lt;s.length()/s.size()报错，推测原因为，两东西类型不一致，添加int len=s.length()解决。<br>丢失数字，原因最后一行数字最后没有空格，无法判断，添加判断即可，注意最后下标为len-1</p>
+<p>可改进部分：输入？存储方式？</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#include &lt;bits/stdc++.h></span>
+using namespace std<span class="token punctuation">;</span>
+int a<span class="token punctuation">[</span><span class="token number">100010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+int <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    int N,mina<span class="token operator">=</span><span class="token number">100010</span>,maxa<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>N<span class="token punctuation">;</span>
+    for<span class="token punctuation">(</span>int <span class="token assign-left variable">ii</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>ii<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>ii++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        string s<span class="token punctuation">;</span>
+        getline<span class="token punctuation">(</span>cin,s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        int <span class="token assign-left variable">len</span><span class="token operator">=</span>s.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        int <span class="token assign-left variable">flagi</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                string <span class="token assign-left variable">str</span><span class="token operator">=</span>s.substr<span class="token punctuation">(</span>flagi,i-flagi<span class="token punctuation">)</span><span class="token punctuation">;</span> //截取
+                <span class="token assign-left variable">flagi</span><span class="token operator">=</span>i+1<span class="token punctuation">;</span>  //准备下次
+                int <span class="token assign-left variable">aa</span><span class="token operator">=</span>atoi<span class="token punctuation">(</span>str.c_str<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>//转换
+                a<span class="token punctuation">[</span>aa<span class="token punctuation">]</span>++<span class="token punctuation">;</span>//存储
+                <span class="token assign-left variable">maxa</span><span class="token operator">=</span>max<span class="token punctuation">(</span>aa,maxa<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token assign-left variable">mina</span><span class="token operator">=</span>min<span class="token punctuation">(</span>aa,mina<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>i<span class="token operator">==</span>len-1<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                string <span class="token assign-left variable">str</span><span class="token operator">=</span>s.substr<span class="token punctuation">(</span>flagi,i-flagi+1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                int <span class="token assign-left variable">aa</span><span class="token operator">=</span>atoi<span class="token punctuation">(</span>str.c_str<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+                a<span class="token punctuation">[</span>aa<span class="token punctuation">]</span>++<span class="token punctuation">;</span>
+                <span class="token assign-left variable">maxa</span><span class="token operator">=</span>max<span class="token punctuation">(</span>aa,maxa<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token assign-left variable">mina</span><span class="token operator">=</span>min<span class="token punctuation">(</span>aa,mina<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>  
+    <span class="token punctuation">&#125;</span>
+    int x,y<span class="token punctuation">;</span>
+    for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span>mina<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>maxa<span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>x<span class="token operator">=</span>i<span class="token punctuation">;</span>
+           <span class="token keyword">else</span> if<span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span>y<span class="token operator">=</span>i<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    cout<span class="token operator">&lt;&lt;</span>x<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>y<span class="token punctuation">;</span>
+    <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>参考其他答案：<br>钻空子的读入方式 by.chaosliang :<br>无视N,直接while(cin &gt;&gt; tp)//直接读到文件尾部停止<br>while(cin &gt;&gt; tp)是这样理解的：当读到文件结尾时cin&gt;&gt;tp返回值是0，还没到结尾的话返回值是1。这样的话，在oj系统上每一组测试数据其实是一组文件，当读入这组文件到结尾就会跳出循环输出结果。但是在本地的运行的话，应该是在黑屏终端下面的，你输入了很多数据，但是他无法判断你是否输入结束（就是到文件结尾），从而不能跳出循环。这个时候你需要在自己输完之后手动加一个命令ctrl+c或者ctrl+d （平台不同的话两个都试试看），表示到达文件结尾，然后就有答案了。</p>
+<h3 id="1208-翻硬币"><a href="#1208-翻硬币" class="headerlink" title="1208. 翻硬币"></a>1208. 翻硬币</h3><p>比较简单，顺序结构</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#include &lt;bits/stdc++.h></span>
+using namespace std<span class="token punctuation">;</span>
+int <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    
+    string s1,s2<span class="token punctuation">;</span>
+    int <span class="token assign-left variable">s</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    getline<span class="token punctuation">(</span>cin,s1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    getline<span class="token punctuation">(</span>cin,s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    int <span class="token assign-left variable">len</span><span class="token operator">=</span>s1.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    for<span class="token punctuation">(</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len-1<span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        if<span class="token punctuation">(</span>s1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span>s2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            s1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>s2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            if<span class="token punctuation">(</span>s1<span class="token punctuation">[</span>i+1<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'*'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>s1<span class="token punctuation">[</span>i+1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'o'</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span> if<span class="token punctuation">(</span>s1<span class="token punctuation">[</span>i+1<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'o'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>s1<span class="token punctuation">[</span>i+1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'*'</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+            
+            s++<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        
+    <span class="token punctuation">&#125;</span>
+
+    cout<span class="token operator">&lt;&lt;</span>s<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="1210-连号区间数"><a href="#1210-连号区间数" class="headerlink" title="1210. 连号区间数"></a>1210. 连号区间数</h3><p>错误答案</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#include &lt;bits/stdc++.h></span>
+using namespace std<span class="token punctuation">;</span>
+int a<span class="token punctuation">[</span><span class="token number">10001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+int <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    int n,s<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>n<span class="token punctuation">;</span>
+    for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        cin<span class="token operator">>></span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        int <span class="token assign-left variable">maxi</span><span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span>,mini<span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        int x<span class="token punctuation">[</span><span class="token number">10001</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">j</span><span class="token operator">=</span>i<span class="token punctuation">;</span>j<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>j++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            
+            x<span class="token punctuation">[</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+            if<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>maxi<span class="token punctuation">)</span>maxi<span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            if<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;</span>mini<span class="token punctuation">)</span>mini<span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            
+            for<span class="token punctuation">(</span>int <span class="token assign-left variable">z</span><span class="token operator">=</span>mini<span class="token punctuation">;</span>z<span class="token operator">&lt;</span>maxi<span class="token punctuation">;</span>z++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                if<span class="token punctuation">(</span>x<span class="token punctuation">[</span>z<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>goto a<span class="token punctuation">;</span>
+                
+            <span class="token punctuation">&#125;</span>
+            cout<span class="token operator">&lt;&lt;</span>i+<span class="token operator"><span class="token file-descriptor important">1</span>&lt;</span><span class="token operator">&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>j+<span class="token operator"><span class="token file-descriptor important">1</span>&lt;</span><span class="token operator">&lt;</span>endl<span class="token punctuation">;</span>
+            s++<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+a:      <span class="token builtin class-name">continue</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    cout<span class="token operator">&lt;&lt;</span>s<span class="token punctuation">;</span>
+    
+    
+    <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可简化：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    int <span class="token assign-left variable">maxi</span><span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span>,mini<span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    
+    for<span class="token punctuation">(</span>int <span class="token assign-left variable">j</span><span class="token operator">=</span>i<span class="token punctuation">;</span>j<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>j++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        
+        if<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>maxi<span class="token punctuation">)</span>maxi<span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        if<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;</span>mini<span class="token punctuation">)</span>mini<span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        if<span class="token punctuation">(</span>maxi-mini<span class="token operator">==</span>j-i<span class="token punctuation">)</span>s++<span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+cout<span class="token operator">&lt;&lt;</span>s<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>正确：、</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#include&lt;bits/stdc++.h></span>
+using namespace std<span class="token punctuation">;</span>
+int n<span class="token punctuation">;</span>
+const int <span class="token assign-left variable">N</span><span class="token operator">=</span><span class="token number">11000</span><span class="token punctuation">;</span>
+int a<span class="token punctuation">[</span>N<span class="token punctuation">]</span>,ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+int <span class="token assign-left variable">max1</span><span class="token operator">=</span><span class="token number">0</span>,min1<span class="token operator">=</span><span class="token number">11000</span><span class="token punctuation">;</span>
+int <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    cin<span class="token operator">>></span>n<span class="token punctuation">;</span>
+    for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>  
+        cin<span class="token operator">>></span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i++<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token assign-left variable">max1</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token assign-left variable">min1</span><span class="token operator">=</span><span class="token number">11000</span><span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">j</span><span class="token operator">=</span>i<span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>j++<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+           <span class="token assign-left variable">max1</span><span class="token operator">=</span>max<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span>,max1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token assign-left variable">min1</span><span class="token operator">=</span>min<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span>,min1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token keyword">if</span><span class="token variable"><span class="token punctuation">((</span>max1<span class="token operator">-</span>min1<span class="token punctuation">)</span><span class="token operator">==</span><span class="token punctuation">(</span>j<span class="token operator">-</span>i<span class="token punctuation">))</span></span>
+           <span class="token punctuation">&#123;</span>
+             ans++<span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC"><span class="toc-text">16. 替换空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8"><span class="toc-text">17. 从尾到头打印链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A8%A1%E5%9D%97"><span class="toc-text">蓝桥杯模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1204-%E9%94%99%E8%AF%AF%E7%A5%A8%E6%8D%AE"><span class="toc-text">1204. 错误票据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1208-%E7%BF%BB%E7%A1%AC%E5%B8%81"><span class="toc-text">1208. 翻硬币</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1210-%E8%BF%9E%E5%8F%B7%E5%8C%BA%E9%97%B4%E6%95%B0"><span class="toc-text">1210. 连号区间数</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://auzc.github.io/2022/02/28/AcWing/">http://auzc.github.io/2022/02/28/AcWing/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/04/20/hello-blogs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo博客教程（备用）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/06/C-%E5%B0%8F%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">C++复习</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+  <div id="comments"></div>
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/28/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">算法设计与分析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/24/Android%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">Android开发笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/20/Andriod%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/">Andriod开发日记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/20/hello-blogs/">Hexo博客教程（备用）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/28/AcWing/">AcWing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年04月</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Andriod/" rel="tag">Andriod</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Course/" rel="tag">Course</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i>
+      友情链接
+    </h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://i-ron.cn/">
+              师傅
+            </a>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 Auzc.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'ad802f0b906bf1885606',
+      clientSecret: '0e103ea36fc14b61fa612773e7c8e4d611d6cf30',
+      repo: 'Gitalk',
+      owner: 'Auzc',
+      admin: ['Auzc'],
+      id: md5(window.location.pathname),
+      distractionFreeMode: false,
+      language: 'zh-CN',
+      pagerDirection: 'last'
+    });
+    gitalk.render('comments');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?51b09a3af6e566628ae1b6287f877a23"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

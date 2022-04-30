@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>LeetCode | Alloc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="正经人谁写日记啊">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="Alloc" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Alloc</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+          <a class="main-nav-link" href="/atom.xml"><i class="fa fa-rss"></i> 订阅</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-LeetCode" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      LeetCode
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-01-15T14:53:30.000Z" itemprop="datePublished">2022年01月15日</time>
+</span>
+      
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/01/15/LeetCode/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h2><h3 id="13-罗马数字转整数"><a href="#13-罗马数字转整数" class="headerlink" title="13. 罗马数字转整数"></a>13. 罗马数字转整数</h3><p>暴力：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int romanToInt<span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        int <span class="token assign-left variable">sum</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span>s.length<span class="token punctuation">(</span><span class="token punctuation">)</span>-1<span class="token punctuation">;</span>i<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span>i--<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'I'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token operator">></span>s.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">||</span>s[i<span class="token operator">+</span><span class="token number">1</span>]<span class="token operator">==</span>'V'<span class="token operator">||</span>s[i<span class="token operator">+</span><span class="token number">1</span>]<span class="token operator">==</span>'X'<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">||</span>s[i<span class="token operator">-</span><span class="token number">1</span>]<span class="token operator">!=</span>'I'<span class="token punctuation">))</span></span><span class="token punctuation">&#123;</span>
+                    sum-<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>else<span class="token punctuation">&#123;</span>
+                    <span class="token assign-left variable">sum</span><span class="token operator">+=</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'V'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">sum</span><span class="token operator">+=</span><span class="token number">5</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'X'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token operator">></span>s.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">||</span>s[i<span class="token operator">+</span><span class="token number">1</span>]<span class="token operator">==</span>'L'<span class="token operator">||</span>s[i<span class="token operator">+</span><span class="token number">1</span>]<span class="token operator">==</span>'C'<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">||</span>s[i<span class="token operator">-</span><span class="token number">1</span>]<span class="token operator">!=</span>'X'<span class="token punctuation">))</span></span><span class="token punctuation">&#123;</span>
+                    sum-<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>else<span class="token punctuation">&#123;</span>
+                    <span class="token assign-left variable">sum</span><span class="token operator">+=</span><span class="token number">10</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'L'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">sum</span><span class="token operator">+=</span><span class="token number">50</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'C'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token operator">></span>s.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">||</span>s[i<span class="token operator">+</span><span class="token number">1</span>]<span class="token operator">==</span>'D'<span class="token operator">||</span>s[i<span class="token operator">+</span><span class="token number">1</span>]<span class="token operator">==</span>'M'<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">||</span>s[i<span class="token operator">-</span><span class="token number">1</span>]<span class="token operator">!=</span>'C'<span class="token punctuation">))</span></span><span class="token punctuation">&#123;</span>
+                    sum-<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>else<span class="token punctuation">&#123;</span>
+                    <span class="token assign-left variable">sum</span><span class="token operator">+=</span><span class="token number">100</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'D'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">sum</span><span class="token operator">+=</span><span class="token number">500</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'M'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">sum</span><span class="token operator">+=</span><span class="token number">1000</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> <span class="token function">sum</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大佬妙解：<br>替换字符串，例如 s = s.replace(“IV”,”a”); (Java)</p>
+<p>赞！！</p>
+<h3 id="14-最长公共前缀"><a href="#14-最长公共前缀" class="headerlink" title="14. 最长公共前缀"></a>14. 最长公共前缀</h3><p>暴力：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    string longestCommonPrefix<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">>&amp;</span> strs<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        if<span class="token punctuation">(</span>strs.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span>return strs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        
+        int <span class="token assign-left variable">num</span><span class="token operator">=</span>strs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        string <span class="token assign-left variable">str1</span><span class="token operator">=</span>strs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>,str<span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>str1.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            char <span class="token assign-left variable">a</span><span class="token operator">=</span>str1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            for<span class="token punctuation">(</span>int <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>strs.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>j++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">str</span><span class="token operator">=</span>strs<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                if<span class="token punctuation">(</span>str.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>i+1<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token assign-left variable">num</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
+                    goto end<span class="token punctuation">;</span>
+                    
+                <span class="token punctuation">&#125;</span>
+                if<span class="token punctuation">(</span>a<span class="token operator">!=</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token assign-left variable">num</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
+                    goto end<span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        end:
+        <span class="token builtin class-name">return</span> strs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.substr<span class="token punctuation">(</span><span class="token number">0</span>,num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大佬妙解：<br>python<br><img src="/2022/01/15/LeetCode/14.jpg"><br>Java</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+    public String longestCommonPrefix<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        if<span class="token punctuation">(</span>strs.length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>return <span class="token string">""</span><span class="token punctuation">;</span>
+        //公共前缀比所有字符串都短，随便选一个先
+        String <span class="token assign-left variable">s</span><span class="token operator">=</span>strs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String string <span class="token builtin class-name">:</span> strs<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            while<span class="token punctuation">(</span><span class="token operator">!</span>string.startsWith<span class="token punctuation">(</span>s<span class="token punctuation">))</span><span class="token punctuation">&#123;</span>
+                if<span class="token punctuation">(</span>s.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>return <span class="token string">""</span><span class="token punctuation">;</span>
+                //公共前缀不匹配就让它变短！
+                <span class="token assign-left variable">s</span><span class="token operator">=</span>s.substring<span class="token punctuation">(</span><span class="token number">0</span>,s.length<span class="token punctuation">(</span><span class="token punctuation">)</span>-1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> s<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="20-有效的括号"><a href="#20-有效的括号" class="headerlink" title="20. 有效的括号"></a>20. 有效的括号</h3><p>简化：<br>（字符串仅有括号可用，其他加判断）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    bool isValid<span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        
+        stack<span class="token operator">&lt;</span>char<span class="token operator">></span> mystack<span class="token punctuation">;</span>
+        char c<span class="token punctuation">;</span>
+       <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token assign-left variable">c</span><span class="token operator">=</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            if<span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token string">'('</span><span class="token punctuation">)</span>mystack.push<span class="token punctuation">(</span><span class="token string">')'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> if<span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token string">'['</span><span class="token punctuation">)</span>mystack.push<span class="token punctuation">(</span><span class="token string">']'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> if<span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token string">'&#123;'</span><span class="token punctuation">)</span>mystack.push<span class="token punctuation">(</span><span class="token string">'&#125;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> if<span class="token punctuation">(</span>mystack.empty<span class="token punctuation">(</span><span class="token punctuation">))</span>return <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> if<span class="token punctuation">(</span>c<span class="token operator">==</span>mystack.top<span class="token punctuation">(</span><span class="token punctuation">))</span>mystack.pop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token builtin class-name">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        
+        
+        <span class="token builtin class-name">return</span> mystack.empty<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大佬妙解：替换<br>python</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution:
+    def isValid<span class="token punctuation">(</span>self, s<span class="token punctuation">)</span>:
+        <span class="token keyword">while</span> <span class="token string">'&#123;&#125;'</span> <span class="token keyword">in</span> s or <span class="token string">'()'</span> <span class="token keyword">in</span> s or <span class="token string">'[]'</span> <span class="token keyword">in</span> s:
+            s <span class="token operator">=</span> s.replace<span class="token punctuation">(</span><span class="token string">'&#123;&#125;'</span>, <span class="token string">''</span><span class="token punctuation">)</span>
+            s <span class="token operator">=</span> s.replace<span class="token punctuation">(</span><span class="token string">'[]'</span>, <span class="token string">''</span><span class="token punctuation">)</span>
+            s <span class="token operator">=</span> s.replace<span class="token punctuation">(</span><span class="token string">'()'</span>, <span class="token string">''</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">return</span> s <span class="token operator">==</span> <span class="token string">''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>java</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+    public boolean isValid<span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        int length <span class="token operator">=</span> s.length<span class="token punctuation">(</span><span class="token punctuation">)</span> / <span class="token number">2</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			s <span class="token operator">=</span> s.replace<span class="token punctuation">(</span><span class="token string">"()"</span>, <span class="token string">""</span><span class="token punctuation">)</span>.replace<span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span>, <span class="token string">""</span><span class="token punctuation">)</span>.replace<span class="token punctuation">(</span><span class="token string">"[]"</span>, <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+
+		<span class="token builtin class-name">return</span> s.length<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="26-删除有序数组中的重复项"><a href="#26-删除有序数组中的重复项" class="headerlink" title="26. 删除有序数组中的重复项"></a>26. 删除有序数组中的重复项</h3><p>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。<br>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<p>妙不可言啊</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int removeDuplicates<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token builtin class-name">return</span> nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	    int j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	    <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i++<span class="token punctuation">)</span>
+		    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> nums<span class="token punctuation">[</span>++j<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>   //j在追赶i，相同时j不变i加。
+	    <span class="token builtin class-name">return</span> ++j<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27. 移除元素"></a>27. 移除元素</h3><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。<br>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。<br>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int removeElement<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> nums, int val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        
+	    int j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	    <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i++<span class="token punctuation">)</span>
+		    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span>val<span class="token punctuation">)</span> nums<span class="token punctuation">[</span>j++<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+	    <span class="token builtin class-name">return</span> j<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>挺标准的答案，哈哈</p>
+<h3 id="28-实现-strStr"><a href="#28-实现-strStr" class="headerlink" title="28. 实现 strStr()"></a>28. 实现 strStr()</h3><p>实现 strStr() 函数。<br>给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回  -1 。</p>
+<p>暴力</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int strStr<span class="token punctuation">(</span>string haystack, string needle<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        if<span class="token punctuation">(</span>haystack.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token operator">&amp;&amp;</span>needle.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>return <span class="token number">0</span><span class="token punctuation">;</span>
+        int <span class="token assign-left variable">len</span><span class="token operator">=</span>needle.length<span class="token punctuation">(</span><span class="token punctuation">)</span>,i<span class="token punctuation">;</span>
+        if<span class="token punctuation">(</span>haystack.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>needle.length<span class="token punctuation">(</span><span class="token punctuation">))</span>return -1<span class="token punctuation">;</span>
+        
+        for<span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>haystack.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            
+            if<span class="token punctuation">(</span>haystack.substr<span class="token punctuation">(</span>i,len<span class="token punctuation">)</span><span class="token operator">==</span>needle<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token builtin class-name">return</span> i<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>if<span class="token punctuation">(</span>i<span class="token operator">>=</span>haystack.length<span class="token punctuation">(</span><span class="token punctuation">)</span>-len<span class="token punctuation">)</span>break<span class="token punctuation">;</span>
+
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> -1<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>内置函数</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">return</span> haystack.find<span class="token punctuation">(</span>needle<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><b>KMP</b>&gt;…先挖坑，以后补</p>
+<h3 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a>35. 搜索插入位置</h3><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。<br>请必须使用时间复杂度为 O(log n) 的算法。<br>暴力：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int searchInsert<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> nums, int target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>=</span>target<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token builtin class-name">return</span> i<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>二分法</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int searchInsert<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> nums, int target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        int n <span class="token operator">=</span> nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        int left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        int right <span class="token operator">=</span> n - <span class="token number">1</span><span class="token punctuation">;</span> // 定义target在左闭右闭的区间里，<span class="token punctuation">[</span>left, right<span class="token punctuation">]</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> // 当left<span class="token operator">==</span>right，区间<span class="token punctuation">[</span>left, right<span class="token punctuation">]</span>依然有效
+            int middle <span class="token operator">=</span> left + <span class="token punctuation">((</span>right - left<span class="token punctuation">)</span> / <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>// 防止溢出 等同于<span class="token punctuation">(</span>left + right<span class="token punctuation">)</span>/2
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>middle<span class="token punctuation">]</span> <span class="token operator">></span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                right <span class="token operator">=</span> middle - <span class="token number">1</span><span class="token punctuation">;</span> // target 在左区间，所以<span class="token punctuation">[</span>left, middle - <span class="token number">1</span><span class="token punctuation">]</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>middle<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                left <span class="token operator">=</span> middle + <span class="token number">1</span><span class="token punctuation">;</span> // target 在右区间，所以<span class="token punctuation">[</span>middle + <span class="token number">1</span>, right<span class="token punctuation">]</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> // nums<span class="token punctuation">[</span>middle<span class="token punctuation">]</span> <span class="token operator">==</span> target
+                <span class="token builtin class-name">return</span> middle<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        // 分别处理如下四种情况
+        // 目标值在数组所有元素之前  <span class="token punctuation">[</span><span class="token number">0</span>, -1<span class="token punctuation">]</span>
+        // 目标值等于数组中某一个元素  <span class="token builtin class-name">return</span> middle<span class="token punctuation">;</span>
+        // 目标值插入数组中的位置 <span class="token punctuation">[</span>left, right<span class="token punctuation">]</span>，return  right + <span class="token number">1</span>
+        // 目标值在数组所有元素之后的情况 <span class="token punctuation">[</span>left, right<span class="token punctuation">]</span>， <span class="token builtin class-name">return</span> right + <span class="token number">1</span>
+        <span class="token builtin class-name">return</span> right + <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="53-最大子数组和"><a href="#53-最大子数组和" class="headerlink" title="53. 最大子数组和"></a>53. 最大子数组和</h3><p>给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。<br>子数组 是数组中的一个连续部分。</p>
+<p>暴力</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int maxSubArray<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        long long int <span class="token assign-left variable">sum</span><span class="token operator">=</span>nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>,max<span class="token operator">=</span>sum,temp_i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">sum</span><span class="token operator">=</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>if<span class="token punctuation">(</span>sum<span class="token operator">></span>max<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>max<span class="token operator">=</span>sum<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+                <span class="token assign-left variable">temp_i</span><span class="token operator">=</span>i<span class="token punctuation">;</span>
+                while<span class="token punctuation">(</span>sum<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    temp_i++<span class="token punctuation">;</span>
+                    if<span class="token punctuation">(</span>temp_i<span class="token operator">>=</span>nums.size<span class="token punctuation">(</span><span class="token punctuation">))</span>break<span class="token punctuation">;</span>
+                    <span class="token assign-left variable">sum</span><span class="token operator">+=</span>nums<span class="token punctuation">[</span>temp_i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    if<span class="token punctuation">(</span>sum<span class="token operator">></span>max<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>max<span class="token operator">=</span>sum<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+                    if<span class="token punctuation">(</span>temp_i<span class="token operator">==</span>nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span>-1<span class="token punctuation">)</span> goto end<span class="token punctuation">;</span>   //不加这句，就超时了，后面都是无效比较  测试例子中10000个10000的情况就无语。
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>else if<span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span>max<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>max<span class="token operator">=</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+
+        <span class="token punctuation">&#125;</span>
+        end:
+        <span class="token builtin class-name">return</span> max<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>大佬简化</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int maxSubArray<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        int res <span class="token operator">=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        int <span class="token function">sum</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>int num <span class="token builtin class-name">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token function">sum</span> <span class="token operator">+=</span> num<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token function">sum</span> <span class="token operator">=</span> num<span class="token punctuation">;</span>      //如果前一位数是负数，就会在这里判断，取这个正数，妙啊。
+            if<span class="token punctuation">(</span>sum<span class="token operator">></span>res<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>res<span class="token operator">=</span>sum<span class="token punctuation">;</span><span class="token punctuation">&#125;</span> //存储了峰值
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> res<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该算法更为简便之处是忽略了对子序列的寻找比较,而是根据规律直接找出最佳答案.<br>对于含有正数的序列而言,最大子序列肯定是正数,所以头尾肯定都是正数.我们可以从第一个正数开始算起,每往后加一个数便更新一次和的最大值;当当前和成为负数时,则表明此前序列无法为后面提供最大子序列和,因此必须重新确定序列首项.</p>
+<h3 id="66-加一"><a href="#66-加一" class="headerlink" title="66. 加一"></a>66. 加一</h3><p>给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。<br>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。<br>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<p>百家之长：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    vector<span class="token operator">&lt;</span>int<span class="token operator">></span> plusOne<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> digits<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span>digits.size<span class="token punctuation">(</span><span class="token punctuation">)</span>-1<span class="token punctuation">;</span>i<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span>i--<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>digits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                digits<span class="token punctuation">[</span>i<span class="token punctuation">]</span>++<span class="token punctuation">;</span>
+                <span class="token builtin class-name">return</span> digits<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            digits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        //所有为9的情况
+        digits.insert<span class="token punctuation">(</span>digits.begin<span class="token punctuation">(</span><span class="token punctuation">)</span> , <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token builtin class-name">return</span> digits<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="67-二进制求和"><a href="#67-二进制求和" class="headerlink" title="67. 二进制求和"></a>67. 二进制求和</h3><p>给你两个二进制字符串，返回它们的和（用二进制表示）。<br>输入为 非空 字符串且只包含数字 1 和 0。</p>
+<p>补齐0；预留一位首0；删去首0。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    string addBinary<span class="token punctuation">(</span>string a, string b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        if<span class="token punctuation">(</span>a.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span>b.length<span class="token punctuation">(</span><span class="token punctuation">))</span> swap<span class="token punctuation">(</span>a,b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        int <span class="token assign-left variable">len_ab</span><span class="token operator">=</span>b.length<span class="token punctuation">(</span><span class="token punctuation">)</span>-a.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        char <span class="token assign-left variable">cc</span><span class="token operator">=</span>b.length<span class="token punctuation">(</span><span class="token punctuation">)</span>-a.length<span class="token punctuation">(</span><span class="token punctuation">)</span>+<span class="token string">'0'</span><span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len_ab+1<span class="token punctuation">;</span>i++<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token string">"0"</span>+a<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token string">"0"</span>+b<span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span>a.length<span class="token punctuation">(</span><span class="token punctuation">)</span>-1<span class="token punctuation">;</span>i<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span>i--<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        
+            int <span class="token assign-left variable">sum</span><span class="token operator">=</span><span class="token punctuation">(</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span>-<span class="token string">'0'</span><span class="token punctuation">)</span>+<span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span>-<span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            switch<span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">case</span> <span class="token number">0</span>:b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'0'</span><span class="token punctuation">;</span><span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token number">1</span>:b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'1'</span><span class="token punctuation">;</span><span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token number">2</span>:b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'0'</span><span class="token punctuation">;</span>b<span class="token punctuation">[</span>i-1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">((</span>b<span class="token punctuation">[</span>i-1<span class="token punctuation">]</span>-<span class="token string">'0'</span><span class="token punctuation">)</span>+1<span class="token punctuation">)</span>+<span class="token string">'0'</span><span class="token punctuation">;</span><span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token number">3</span>:b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'1'</span><span class="token punctuation">;</span>b<span class="token punctuation">[</span>i-1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">((</span>b<span class="token punctuation">[</span>i-1<span class="token punctuation">]</span>-<span class="token string">'0'</span><span class="token punctuation">)</span>+1<span class="token punctuation">)</span>+<span class="token string">'0'</span><span class="token punctuation">;</span><span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+                default:break<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+
+        while<span class="token punctuation">(</span>b.length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            if<span class="token punctuation">(</span>b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token assign-left variable">b</span><span class="token operator">=</span>b.substr<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+            <span class="token punctuation">&#125;</span>else <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        
+        <span class="token builtin class-name">return</span> b<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>骚python: return bin(int(a,2)+int(b,2))[2:]</p>
+<h3 id="69-Sqrt-x"><a href="#69-Sqrt-x" class="headerlink" title="69. Sqrt(x)"></a>69. Sqrt(x)</h3><p>算术平方根，返回整数</p>
+<p>二分法：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int mySqrt<span class="token punctuation">(</span>int x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        if<span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token builtin class-name">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        int min <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        int max <span class="token operator">=</span> x<span class="token punctuation">;</span>
+        while<span class="token punctuation">(</span>max-min<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            int m <span class="token operator">=</span> <span class="token punctuation">(</span>max+min<span class="token punctuation">)</span>/2<span class="token punctuation">;</span>
+            if<span class="token punctuation">(</span>x/m<span class="token operator">&lt;</span>m<span class="token punctuation">)</span>           //二分查找，用x/m<span class="token operator">&lt;</span>m而不是m*m<span class="token operator">></span>x防止溢出
+                max <span class="token operator">=</span> m<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                min <span class="token operator">=</span> m<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> min<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>内置函数：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">return</span> <span class="token punctuation">(</span>int<span class="token punctuation">)</span>sqrt<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="136-只出现一次的数字"><a href="#136-只出现一次的数字" class="headerlink" title="136. 只出现一次的数字"></a>136. 只出现一次的数字</h3><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。<br>异或^:<br>（1）与0相^，保留原值<br>（2）交换两个值，不用临时变量<br>（3）与自己相^，值为0</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">class Solution <span class="token punctuation">&#123;</span>
+public:
+    int singleNumber<span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>int<span class="token operator">>&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        int <span class="token assign-left variable">re</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        for<span class="token punctuation">(</span>int <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>nums.size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i++<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token assign-left variable">re</span><span class="token operator">=</span>re^nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">return</span> re<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>一行：return accumulate(nums.begin(),nums.end(),0,bit_xor());</p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95"><span class="toc-text">简单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0"><span class="toc-text">13. 罗马数字转整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80"><span class="toc-text">14. 最长公共前缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7"><span class="toc-text">20. 有效的括号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="toc-text">26. 删除有序数组中的重复项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-text">27. 移除元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#28-%E5%AE%9E%E7%8E%B0-strStr"><span class="toc-text">28. 实现 strStr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="toc-text">35. 搜索插入位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C"><span class="toc-text">53. 最大子数组和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#66-%E5%8A%A0%E4%B8%80"><span class="toc-text">66. 加一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#67-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C"><span class="toc-text">67. 二进制求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#69-Sqrt-x"><span class="toc-text">69. Sqrt(x)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-text">136. 只出现一次的数字</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://auzc.github.io/2022/01/15/LeetCode/">http://auzc.github.io/2022/01/15/LeetCode/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/01/17/%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          第一周周题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/13/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-%E8%BF%9B%E9%98%B6%E5%8C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">攻防世界-进阶区</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+  <div id="comments"></div>
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/28/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">算法设计与分析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/24/Android%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">Android开发笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/20/Andriod%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/">Andriod开发日记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/20/hello-blogs/">Hexo博客教程（备用）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/28/AcWing/">AcWing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年04月</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Andriod/" rel="tag">Andriod</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Course/" rel="tag">Course</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i>
+      友情链接
+    </h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://i-ron.cn/">
+              师傅
+            </a>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 Auzc.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'ad802f0b906bf1885606',
+      clientSecret: '0e103ea36fc14b61fa612773e7c8e4d611d6cf30',
+      repo: 'Gitalk',
+      owner: 'Auzc',
+      admin: ['Auzc'],
+      id: md5(window.location.pathname),
+      distractionFreeMode: false,
+      language: 'zh-CN',
+      pagerDirection: 'last'
+    });
+    gitalk.render('comments');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?51b09a3af6e566628ae1b6287f877a23"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

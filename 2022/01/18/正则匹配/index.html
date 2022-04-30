@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>正则匹配 | Alloc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="正经人谁写日记啊">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="Alloc" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Alloc</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+          <a class="main-nav-link" href="/atom.xml"><i class="fa fa-rss"></i> 订阅</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-正则匹配" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      正则匹配
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2022-01-18T04:16:38.000Z" itemprop="datePublished">2022年01月18日</time>
+</span>
+      
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2022/01/18/%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">.</span> ：除了换行以外的所有字符
+* ： 匹配前面的内容出现 <span class="token number">0</span> 次及以上。
+? <span class="token builtin class-name">:</span> 匹配前面的内容出现 <span class="token number">0</span> 次或 <span class="token number">1</span> 次。
++ <span class="token builtin class-name">:</span> 出现一次或多次。
+^ <span class="token builtin class-name">:</span> 必须以它开头。
+$ <span class="token builtin class-name">:</span> 必须以它结尾。
+<span class="token punctuation">&#123;</span>n<span class="token punctuation">&#125;</span> <span class="token builtin class-name">:</span> 恰巧出现 n 次。
+<span class="token punctuation">&#123;</span>n,<span class="token punctuation">&#125;</span> <span class="token builtin class-name">:</span> 大于等于 n 次。
+<span class="token punctuation">&#123;</span>n,m<span class="token punctuation">&#125;</span> <span class="token builtin class-name">:</span> 大于等于 n, 小于等于 m.
+<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token builtin class-name">:</span> 是一个集合，匹配中括号中的任意一个字符，如：<span class="token punctuation">[</span>abc<span class="token punctuation">]</span>即为匹配a或b或者c。
+<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin class-name">:</span> 后项引用 或者是当做一个整体。
+<span class="token punctuation">[</span>^<span class="token punctuation">]</span>: 取反。
+<span class="token operator">|</span> <span class="token builtin class-name">:</span> 或者
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span> <span class="token builtin class-name">:</span> 代表一个范围，如<span class="token punctuation">[</span><span class="token number">0</span>-9<span class="token punctuation">]</span>,匹配即为 0123456789
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="通用原子"><a href="#通用原子" class="headerlink" title="通用原子"></a>通用原子</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">\</span>d <span class="token builtin class-name">:</span> 数字。  <span class="token punctuation">\</span>D <span class="token builtin class-name">:</span> 除了数字。
+<span class="token punctuation">\</span>w <span class="token builtin class-name">:</span> 数字，字母，下划线。<span class="token punctuation">\</span>W <span class="token builtin class-name">:</span> 除了数字，字母，下划线。
+<span class="token punctuation">\</span>s  <span class="token builtin class-name">:</span> 空白符 。 <span class="token punctuation">\</span>S <span class="token builtin class-name">:</span> 除了空白符  。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="模式修正符"><a href="#模式修正符" class="headerlink" title="模式修正符"></a>模式修正符</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">i:不区分大小写。
+m:将字符串通过分隔符进行分割，将字符串中的每一行分别进行匹配。
+e: 将匹配出来的内容做一些php语法上的处理。
+s: 修正 <span class="token string">"."</span> 的换行。
+U: 取消贪婪模式。
+x: 忽略模式中的空白符。
+A: 必须以这个模式开头。
+D: 修正 <span class="token string">"$"</span> 对 <span class="token string">"<span class="token entity" title="\n">\n</span>"</span> 的忽略。
+u: 做 utf-8 中文匹配的时候使用。
+g:该表达式可以进行全局匹配。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%8E%9F%E5%AD%90"><span class="toc-text">通用原子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E4%BF%AE%E6%AD%A3%E7%AC%A6"><span class="toc-text">模式修正符</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="http://auzc.github.io/2022/01/18/正则匹配/">http://auzc.github.io/2022/01/18/正则匹配/</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li></ul>
+
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2022/01/21/Linux%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Linux命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/17/%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">第一周周题</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+  <div id="comments"></div>
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/28/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/">算法设计与分析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/24/Android%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">Android开发笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/20/Andriod%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/">Andriod开发日记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/20/hello-blogs/">Hexo博客教程（备用）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/28/AcWing/">AcWing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年04月</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Andriod/" rel="tag">Andriod</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Course/" rel="tag">Course</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i>
+      友情链接
+    </h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://i-ron.cn/">
+              师傅
+            </a>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2022 Auzc.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'ad802f0b906bf1885606',
+      clientSecret: '0e103ea36fc14b61fa612773e7c8e4d611d6cf30',
+      repo: 'Gitalk',
+      owner: 'Auzc',
+      admin: ['Auzc'],
+      id: md5(window.location.pathname),
+      distractionFreeMode: false,
+      language: 'zh-CN',
+      pagerDirection: 'last'
+    });
+    gitalk.render('comments');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?51b09a3af6e566628ae1b6287f877a23"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
