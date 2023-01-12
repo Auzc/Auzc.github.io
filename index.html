@@ -152,6 +152,187 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-打印浮点数精度问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/12/%E6%89%93%E5%8D%B0%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/">打印浮点数精度问题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/12/%E6%89%93%E5%8D%B0%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-01-12T08:23:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-如何保留2位小数输出"><a href="#C-如何保留2位小数输出" class="headerlink" title="C++如何保留2位小数输出"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/stacktrace/p/5142470.html">C++如何保留2位小数输出</a></h2><p>cout&lt;&lt;setiosflags(ios::fixed)&lt;&lt;setprecision(2);//需要头文件#include <iomanip></iomanip></p>
+<p>然后再输出实数类型变量即可以保留2位小数输出了，当然你要保留三位小数，setprecision(3)就行。</p>
+<p>setprecision是指设置输出精度，当没有</p>
+<p>cout&lt;&lt;setiosflags(ios::fixed)</p>
+<p>时，输出格式是数据的有效位数，例如</p>
+<p>float a = 123.666;<br>cout&lt;&lt;setprecision(5)&lt;&lt;a;</p>
+<p>将输出123.67（注意这里，它会四舍五入）。如果setprecision里的参数小于整数位数，将以指数形式输出，例如</p>
+<p>float a = 123.666;<br>cout&lt;&lt;setprecision(2)&lt;&lt;a;</p>
+<p>将输出1.2e+002。</p>
+<p>setiosflags(ios::fixed)是指以固定的浮点显示，当setiosflags(ios::fixed)和serprecision(n)两个一起用时就表示保留n位小数输出。这里还要注意，每次输出只要设置一次就行了，因为这两个的作用范围是后续对象，而不是仅对后一个对象起作用。</p>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.2lf&quot;</span>,num);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/12/%E6%89%93%E5%8D%B0%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-统计数出现的次数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/12/%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/">统计数出现的次数</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/12/%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2023-01-12T07:42:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3403/">3400. 统计次数 - AcWing题库</a>    </p>
+<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202301121544556.png"></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> j=i;</span><br><span class="line">        <span class="keyword">while</span>(j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(k==j%<span class="number">10</span>)&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            j/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>哎，这题不超时</p>
+<p>本来想好的，拆开做</p>
+<p>比如1111分解为1000和111，1000部分+1000～1111</p>
+<p>规律：</p>
+<p>k=2～9，规律相同</p>
+<p>n=10,sum=1</p>
+<p>n=100,sum=20</p>
+<p>n=1000,sum=300</p>
+<p>n=10000,sum=4000</p>
+<p>n=100000,sum=50000</p>
+<p>m=1000000,sum=600000</p>
+<p>k=1，有些特殊，以上sum各+1</p>
+<p>k=0，不好说</p>
+<p>n=10,sum=2</p>
+<p>n=100,sum=11</p>
+<p>n=1000,sum=192</p>
+<p>n=10000,sum=2893</p>
+<p>n=100000,sum=38894</p>
+<p>n=1000000,sum=488895</p>
+<p>n=10000000,sum=5888896</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/12/%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
