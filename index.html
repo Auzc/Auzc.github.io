@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-截断数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/">截断数组</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2023-02-13T03:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line">LL sum[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    LL re=<span class="number">0</span>,temp=<span class="number">0</span>;    <span class="comment">//需要LL</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;sum[i];</span><br><span class="line">        sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(sum[n]%<span class="number">3</span>!=<span class="number">0</span>||n&lt;<span class="number">3</span>)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;0&quot;</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LL averge=sum[n]/<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;    <span class="comment">//不要等于n，否则划分和为0的时候会多加</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(sum[i]==averge*<span class="number">2</span>)</span><br><span class="line">            re+=temp;</span><br><span class="line">        <span class="keyword">if</span>(sum[i]==averge)</span><br><span class="line">            temp++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;re&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3959/">3956. 截断数组 - AcWing题库</a></p>
+<p>给定一个长度为 n 的数组 a1,a2,…,an。</p>
+<p>现在，要将该数组从中间截断，得到三个<strong>非空</strong>子数组。</p>
+<p>要求，三个子数组内各元素之和都相等。</p>
+<p>请问，共有多少种不同的截断方法？</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 n。</p>
+<p>第二行包含 n 个整数 a1,a2,…,an。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示截断方法数量。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>前六个测试点满足 1≤n≤10。<br>所有测试点满足 1≤n≤105，−10000≤ai≤10000。</p>
+<h4 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">1 2 3 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例3："><a href="#输入样例3：" class="headerlink" title="输入样例3："></a>输入样例3：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例3："><a href="#输出样例3：" class="headerlink" title="输出样例3："></a>输出样例3：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数分别相乘求和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -957,107 +1052,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/09/%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Acwing周赛" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/08/Acwing%E5%91%A8%E8%B5%9B/">Acwing周赛</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/08/Acwing%E5%91%A8%E8%B5%9B/" class="archive-article-date">
-  	<time datetime="2023-01-08T14:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="AcWing周赛"><a href="#AcWing周赛" class="headerlink" title="AcWing周赛"></a>AcWing周赛</h1><p>思路复盘与记录</p>
-<h2 id="AcWing第62场周赛笔记"><a href="#AcWing第62场周赛笔记" class="headerlink" title="AcWing第62场周赛笔记"></a>AcWing第62场周赛笔记</h2><h3 id="三个元素"><a href="#三个元素" class="headerlink" title="三个元素"></a>三个元素</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4503/">题目详情</a></p>
-<h4 id="个人暴力代码（输入顺便比较）"><a href="#个人暴力代码（输入顺便比较）" class="headerlink" title="个人暴力代码（输入顺便比较）"></a>个人暴力代码（输入顺便比较）</h4><p>输入时找到最小，遍历找两个不一样，排序</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> a[n];</span><br><span class="line">    <span class="type">int</span> min_a=<span class="number">1e9</span>,min_a_i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        <span class="keyword">if</span>(min_a&gt;a[i])&#123;</span><br><span class="line">            min_a=a[i];</span><br><span class="line">            min_a_i=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> temp_i1;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]!=min_a)&#123;</span><br><span class="line">            temp_i1=i;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a[i]!=min_a&amp;&amp;a[i]!=a[temp_i1])&#123;</span><br><span class="line">                    <span class="keyword">if</span>(a[i]&gt;a[temp_i1])&#123;</span><br><span class="line">                        <span class="built_in">cout</span>&lt;&lt;min_a_i+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;temp_i1+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;i+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="built_in">cout</span>&lt;&lt;min_a_i+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;i+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;temp_i1+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;-1 -1 -1&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="容器代码（-map-size-）"><a href="#容器代码（-map-size-）" class="headerlink" title="容器代码（ map.size() ）"></a>容器代码（ map.size() ）</h4><p>map容器操作</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pos;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        pos[x] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pos.size() &lt; <span class="number">3</span>) <span class="built_in">puts</span>(<span class="string">&quot;-1 -1 -1&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> [k, v]: pos) res.push_back(v);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i ++ )</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; res[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="收集卡牌"><a href="#收集卡牌" class="headerlink" title="收集卡牌"></a>收集卡牌</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4504/">题目详情</a></p>
-<h4 id="个人编码记录（判断基数变动）"><a href="#个人编码记录（判断基数变动）" class="headerlink" title="个人编码记录（判断基数变动）"></a>个人编码记录（判断基数变动）</h4><p>开数组，check，集齐一套，判断基数加一（节省遍历减一时间），倒着检查可能会取巧。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> check[n+<span class="number">1</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">int</span> base=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        check[a[i]]++;</span><br><span class="line">        <span class="type">int</span> flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=n;j&gt;=<span class="number">1</span>;j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[j]==base)&#123;</span><br><span class="line">                flag=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">            base++;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;1&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;0&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="yxc代码（一种判断全套方法）"><a href="#yxc代码（一种判断全套方法）" class="headerlink" title="yxc代码（一种判断全套方法）"></a>yxc代码（一种判断全套方法）</h4><p>思路：每录一个，先记录在卡牌数组里，如果记录前为0，不同牌类数（tot）++，当不同牌类数==n，打印1，遍历减去一套牌，当一种牌数量降为0，tot–。</p>
-<h4 id="复合代码"><a href="#复合代码" class="headerlink" title="复合代码"></a>复合代码</h4><p>结合下，不用遍历减一套，统计下套数为基数，不过还需要遍历。</p>
-<h2 id="AcWing第63场周赛笔记"><a href="#AcWing第63场周赛笔记" class="headerlink" title="AcWing第63场周赛笔记"></a>AcWing第63场周赛笔记</h2><h3 id="字符串消除"><a href="#字符串消除" class="headerlink" title="字符串消除"></a>字符串消除</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4507/">题目详情</a></p>
-<h4 id="个人栈代码（类括号抵消问题）"><a href="#个人栈代码（类括号抵消问题）" class="headerlink" title="个人栈代码（类括号抵消问题）"></a>个人栈代码（类括号抵消问题）</h4><p>栈应用 stack push pop top</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">string</span> str;</span><br><span class="line">    getline(<span class="built_in">cin</span>,str);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="type">char</span>&gt; s;</span><br><span class="line">    s.push(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    s.push(str[<span class="number">0</span>]);</span><br><span class="line">    <span class="type">char</span> temp=s.top();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;str.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp=s.top();</span><br><span class="line">        s.push(str[i]);</span><br><span class="line">        <span class="keyword">if</span>(s.top()==temp)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            s.pop();</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(count%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;No&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Yes&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="string操作代码（-pop-back-）"><a href="#string操作代码（-pop-back-）" class="headerlink" title="string操作代码（ pop_back() ）"></a>string操作代码（ pop_back() ）</h4><p>string也可以pop</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> str, stk;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> c: str)</span><br><span class="line">        <span class="keyword">if</span> (stk.back() == c)</span><br><span class="line">        &#123;</span><br><span class="line">            stk.pop_back();</span><br><span class="line">            res ++ ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> stk += c;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (res % <span class="number">2</span>) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">练习赛</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Acwing</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/08/Acwing%E5%91%A8%E8%B5%9B/">展开全文 >></a>
         </p>
       
 

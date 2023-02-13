@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://auzc.github.io">
-  <title>数分别相乘求和 | Au&#39;s Blogs</title>
+  <title>截断数组 | Au&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&#x2F;&#x2F;求出总和，结果就是。求和(sum-a[i])*a[i]&#x2F;2#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;int main()&amp;#123;    int n;cin&gt;&gt;n;    int a[n];    long long sum&#x3D;0;">
+  <meta name="description" content="#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;typedef long long LL;LL sum[100010];int main()&amp;#123;    int n;    cin&gt;&gt;n;    LL re&#x3D;0,temp&#x3D;0;    &#x2F;&#x2F;需">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数分别相乘求和">
-<meta property="og:url" content="http://auzc.github.io/2023/01/25/%E6%95%B0%E5%88%86%E5%88%AB%E7%9B%B8%E4%B9%98%E6%B1%82%E5%92%8C/index.html">
+<meta property="og:title" content="截断数组">
+<meta property="og:url" content="http://auzc.github.io/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Au&#39;s Blogs">
-<meta property="og:description" content="&#x2F;&#x2F;求出总和，结果就是。求和(sum-a[i])*a[i]&#x2F;2#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;int main()&amp;#123;    int n;cin&gt;&gt;n;    int a[n];    long long sum&#x3D;0;">
+<meta property="og:description" content="#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;typedef long long LL;LL sum[100010];int main()&amp;#123;    int n;    cin&gt;&gt;n;    LL re&#x3D;0,temp&#x3D;0;    &#x2F;&#x2F;需">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-25T06:21:50.000Z">
-<meta property="article:modified_time" content="2023-01-25T06:26:09.392Z">
+<meta property="article:published_time" content="2023-02-13T03:47:26.000Z">
+<meta property="article:modified_time" content="2023-02-13T03:49:57.959Z">
 <meta property="article:author" content="Au">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -155,48 +155,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-数分别相乘求和" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-截断数组" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数分别相乘求和
+      截断数组
     </h1>
   
 
         
-        <a href="/2023/01/25/%E6%95%B0%E5%88%86%E5%88%AB%E7%9B%B8%E4%B9%98%E6%B1%82%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2023-01-25T06:21:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-25</time>
+        <a href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2023-02-13T03:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//求出总和，结果就是。求和(sum-a[i])*a[i]/2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;cin&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> a[n];</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">        sum+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> re=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        re+=(sum-a[i])*a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    re/=<span class="number">2</span>;</span><br><span class="line">    cout&lt;&lt;re;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line">LL sum[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    LL re=<span class="number">0</span>,temp=<span class="number">0</span>;    <span class="comment">//需要LL</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;sum[i];</span><br><span class="line">        sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(sum[n]%<span class="number">3</span>!=<span class="number">0</span>||n&lt;<span class="number">3</span>)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;0&quot;</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LL averge=sum[n]/<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;    <span class="comment">//不要等于n，否则划分和为0的时候会多加</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(sum[i]==averge*<span class="number">2</span>)</span><br><span class="line">            re+=temp;</span><br><span class="line">        <span class="keyword">if</span>(sum[i]==averge)</span><br><span class="line">            temp++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;re&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<ol start="4644">
-<li>求和</li>
-</ol>
-<ul>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/4647/">题目</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/submission/4647/">提交记录</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/discussion/index/4647/1/">讨论</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/solution/4647/1/">题解</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/video/4647/">视频讲解</a></li>
-</ul>
-<p>给定 n 个整数 a1,a2,···,an，求它们两两相乘再相加的和，即</p>
-<p>S=a1·a2+a1·a3+···+a1·an+a2·a3+···+an−2·an−1+an−2·an+an−1·an</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入的第一行包含一个整数 n。</p>
-<p>第二行包含 n 个整数 a1,a2,···,an。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数 S，表示所求的和。</p>
-<p>请使用合适的数据类型进行运算。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>对于 30% 的数据，1≤n≤1000，1≤ai≤100。<br>对于所有评测用例，1≤n≤200000，1≤ai≤1000。</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">1 3 6 9</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3959/">3956. 截断数组 - AcWing题库</a></p>
+<p>给定一个长度为 n 的数组 a1,a2,…,an。</p>
+<p>现在，要将该数组从中间截断，得到三个<strong>非空</strong>子数组。</p>
+<p>要求，三个子数组内各元素之和都相等。</p>
+<p>请问，共有多少种不同的截断方法？</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 n。</p>
+<p>第二行包含 n 个整数 a1,a2,…,an。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示截断方法数量。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>前六个测试点满足 1≤n≤10。<br>所有测试点满足 1≤n≤105，−10000≤ai≤10000。</p>
+<h4 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">1 2 3 3</span><br></pre></td></tr></table></figure>
 
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">117</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例3："><a href="#输入样例3：" class="headerlink" title="输入样例3："></a>输入样例3：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例3："><a href="#输出样例3：" class="headerlink" title="输出样例3："></a>输出样例3：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
 
       
 
@@ -287,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://auzc.github.io/2023/01/25/%E6%95%B0%E5%88%86%E5%88%AB%E7%9B%B8%E4%B9%98%E6%B1%82%E5%92%8C/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://auzc.github.io/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,18 +301,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          截断数组
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/01/24/%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86%EF%BC%88%E4%BA%8C%E8%BF%9B%E5%88%B6%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">优秀的拆分（二进制）</div>
+    <a href="/2023/01/25/%E6%95%B0%E5%88%86%E5%88%AB%E7%9B%B8%E4%B9%98%E6%B1%82%E5%92%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数分别相乘求和</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -340,7 +331,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="数分别相乘求和" data-title="数分别相乘求和" data-url="http://auzc.github.io/2023/01/25/%E6%95%B0%E5%88%86%E5%88%AB%E7%9B%B8%E4%B9%98%E6%B1%82%E5%92%8C/"></div>
+	<div class="ds-thread" data-thread-key="截断数组" data-title="截断数组" data-url="http://auzc.github.io/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -363,8 +354,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://auzc.github.io/2023/01/25/%E6%95%B0%E5%88%86%E5%88%AB%E7%9B%B8%E4%B9%98%E6%B1%82%E5%92%8C/", 
-    sourceId: "数分别相乘求和",
+    url: "http://auzc.github.io/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/", 
+    sourceId: "截断数组",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -373,7 +364,7 @@
   
 
   
-  <div id="SOHUCS" sid="数分别相乘求和" ></div> 
+  <div id="SOHUCS" sid="截断数组" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
