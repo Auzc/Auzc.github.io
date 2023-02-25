@@ -6,21 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://auzc.github.io">
-  <title>Au&#39;s Blogs</title>
+  <title>Ubuntu安装图形化界面 | Au&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Ubuntu 14此处以安装GNOME桌面环境为例，步骤如下：  通过管理终端连接Linux实例，详情请参见连接方式概述ECS远程连接操作指南。  执行以下命令，更新软件源。 apt-get update 依次执行以下命令，安装GNOME桌面环境。 apt-get install x-window-system-coreapt-get install gnome-core 执行以下命令，启动图形化">
+  <meta name="description" content="Ubuntu 14 此处以安装GNOME桌面环境为例，步骤如下：  通过管理终端连接Linux实例，详情请参见连接方式概述ECS远程连接操作指南。  执行以下命令，更新软件源。 apt-get update 依次执行以下命令，安装GNOME桌面环境。 apt-get install x-window-system-coreapt-get install gnome-core 执行以下命令，启动图形">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Au&#39;s Blogs">
-<meta property="og:url" content="http://auzc.github.io/2023/02/22/Ubuntu/index.html">
+<meta property="og:title" content="Ubuntu安装图形化界面">
+<meta property="og:url" content="http://auzc.github.io/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/index.html">
 <meta property="og:site_name" content="Au&#39;s Blogs">
-<meta property="og:description" content="Ubuntu 14此处以安装GNOME桌面环境为例，步骤如下：  通过管理终端连接Linux实例，详情请参见连接方式概述ECS远程连接操作指南。  执行以下命令，更新软件源。 apt-get update 依次执行以下命令，安装GNOME桌面环境。 apt-get install x-window-system-coreapt-get install gnome-core 执行以下命令，启动图形化">
+<meta property="og:description" content="Ubuntu 14 此处以安装GNOME桌面环境为例，步骤如下：  通过管理终端连接Linux实例，详情请参见连接方式概述ECS远程连接操作指南。  执行以下命令，更新软件源。 apt-get update 依次执行以下命令，安装GNOME桌面环境。 apt-get install x-window-system-coreapt-get install gnome-core 执行以下命令，启动图形">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/3538439661/p519176.png">
-<meta property="article:published_time" content="2023-02-22T11:58:29.892Z">
-<meta property="article:modified_time" content="2023-02-22T11:58:47.864Z">
+<meta property="article:published_time" content="2023-02-25T07:04:08.000Z">
+<meta property="article:modified_time" content="2023-02-25T07:04:57.902Z">
 <meta property="article:author" content="Au">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/3538439661/p519176.png">
   
     <link rel="alternative" href="/atom.xml" title="Au&#39;s Blogs" type="application/atom+xml">
   
@@ -156,12 +155,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Ubuntu" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Ubuntu安装图形化界面" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu安装图形化界面
+    </h1>
+  
+
+        
+        <a href="/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/" class="archive-article-date">
+  	<time datetime="2023-02-25T07:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-25</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Ubuntu-14"><a href="#Ubuntu-14" class="headerlink" title="Ubuntu 14"></a><strong>Ubuntu 14</strong></h2><p>此处以安装GNOME桌面环境为例，步骤如下：</p>
+        <p><strong>Ubuntu 14</strong></p>
+<p>此处以安装GNOME桌面环境为例，步骤如下：</p>
 <ol>
 <li><p>通过管理终端连接Linux实例，详情请参见<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/71529.htm">连接方式概述ECS远程连接操作指南</a>。</p>
 </li>
@@ -171,7 +186,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">apt-get install x-<span class="variable language_">window</span>-system-core</span><br><span class="line">apt-get install gnome-core</span><br></pre></td></tr></table></figure></li>
 <li><p>执行以下命令，启动图形化桌面。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure></li>
-<li><p>关闭当前终端连接，通过ECS管理控制台的VNC连接实例，请参见<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25433.htm">通过密码认证登录Linux实例</a>，确认图形化桌面环境安装成功。<img src="https://help-static-aliyun-doc.aliyuncs.com/assets/img/zh-CN/3538439661/p519176.png"></p>
+<li><p>关闭当前终端连接，通过ECS管理控制台的VNC连接实例，请参见<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25433.htm">通过密码认证登录Linux实例</a>，确认图形化桌面环境安装成功。</p>
 </li>
 </ol>
 
@@ -203,6 +218,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -253,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://auzc.github.io/2023/02/22/Ubuntu/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://auzc.github.io/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -267,11 +293,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/02/24/%E9%9A%8F%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/02/25/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%80%E5%B7%A6%E6%9C%80%E5%8F%B3%E6%8E%A8%E5%AF%BC/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          编译原理最左最右推导
         
       </div>
     </a>
@@ -306,7 +332,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Ubuntu" data-title="" data-url="http://auzc.github.io/2023/02/22/Ubuntu/"></div>
+	<div class="ds-thread" data-thread-key="Ubuntu安装图形化界面" data-title="Ubuntu安装图形化界面" data-url="http://auzc.github.io/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -329,8 +355,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://auzc.github.io/2023/02/22/Ubuntu/", 
-    sourceId: "Ubuntu",
+    url: "http://auzc.github.io/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/", 
+    sourceId: "Ubuntu安装图形化界面",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -339,7 +365,7 @@
   
 
   
-  <div id="SOHUCS" sid="Ubuntu" ></div> 
+  <div id="SOHUCS" sid="Ubuntu安装图形化界面" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -490,6 +516,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
             
             <div class="clearfix"></div>

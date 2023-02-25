@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://auzc.github.io">
-  <title>Au&#39;s Blogs</title>
+  <title>背包相关 | Au&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="随记 DAL是什么，是什么文件夹吗 DAL 是数据访问层（Data Access Layer）的缩写，它是一种常用的软件设计模式，用于将数据存储和检索操作与业务逻辑分离。在 Android 应用中，可以使用 DAL 将数据库操作和数据模型的定义分离开来，从而提高代码的可维护性和可扩展性。 在 Android 中，DAL 通常不是一个文件夹或者一个特定的代码文件，而是一种设计模式，可以通过创建一个单">
+  <meta name="description" content="#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int n &#x3D; 1010;int v[n],w[n],f[n][n];int main()&amp;#123;    int N,V;    cin&gt;&gt;N&gt;&gt;V;    for(in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Au&#39;s Blogs">
-<meta property="og:url" content="http://auzc.github.io/2023/02/24/%E9%9A%8F%E8%AE%B0/index.html">
+<meta property="og:title" content="背包相关">
+<meta property="og:url" content="http://auzc.github.io/2023/02/25/%E8%83%8C%E5%8C%85%E7%9B%B8%E5%85%B3/index.html">
 <meta property="og:site_name" content="Au&#39;s Blogs">
-<meta property="og:description" content="随记 DAL是什么，是什么文件夹吗 DAL 是数据访问层（Data Access Layer）的缩写，它是一种常用的软件设计模式，用于将数据存储和检索操作与业务逻辑分离。在 Android 应用中，可以使用 DAL 将数据库操作和数据模型的定义分离开来，从而提高代码的可维护性和可扩展性。 在 Android 中，DAL 通常不是一个文件夹或者一个特定的代码文件，而是一种设计模式，可以通过创建一个单">
+<meta property="og:description" content="#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;const int n &#x3D; 1010;int v[n],w[n],f[n][n];int main()&amp;#123;    int N,V;    cin&gt;&gt;N&gt;&gt;V;    for(in">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-24T02:37:07.746Z">
-<meta property="article:modified_time" content="2023-02-24T02:37:07.747Z">
+<meta property="article:published_time" content="2023-02-25T07:09:49.000Z">
+<meta property="article:modified_time" content="2023-02-25T07:10:48.097Z">
 <meta property="article:author" content="Au">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Au&#39;s Blogs" type="application/atom+xml">
@@ -154,21 +155,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-随记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-背包相关" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      背包相关
+    </h1>
+  
+
+        
+        <a href="/2023/02/25/%E8%83%8C%E5%8C%85%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2023-02-25T07:09:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-25</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>随记</p>
-<p>DAL是什么，是什么文件夹吗</p>
-<p>DAL 是数据访问层（Data Access Layer）的缩写，它是一种常用的软件设计模式，用于将数据存储和检索操作与业务逻辑分离。在 Android 应用中，可以使用 DAL 将数据库操作和数据模型的定义分离开来，从而提高代码的可维护性和可扩展性。</p>
-<p>在 Android 中，DAL 通常不是一个文件夹或者一个特定的代码文件，而是一种设计模式，可以通过创建一个单独的类或者一组类来实现。通常情况下，DAL 类包含了以下几个组件：</p>
-<ol>
-<li>数据库帮助类（Database Helper）：用于创建和管理数据库的结构。</li>
-<li>数据模型（Data Model）：用于表示应用程序需要存储的数据。</li>
-<li>数据源（Data Source）：封装了对数据库的读写操作，提供了数据的增删改查接口。</li>
-</ol>
-<p>因此，在创建 DAL 类时，需要定义这三个组件，并将它们组织成一种良好的架构。在 Android 应用中，通常将这些组件放在不同的文件中，并将它们组织成一个单独的包或者模块。例如，在上面的示例代码中，UserDbHelper、UserContract 和 User 类组成了数据模型；UserDataSource 类则封装了对数据库的读写操作，并提供了数据的增删改查接口。</p>
+        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> n = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> v[n],w[n],f[n][n];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> N,V;</span><br><span class="line">    cin&gt;&gt;N&gt;&gt;V;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        cin&gt;&gt;v[i]&gt;&gt;w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=V;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;v[i])&#123;</span><br><span class="line">                f[i][j]=f[i<span class="number">-1</span>][j];</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                f[i][j]=<span class="built_in">max</span>(f[i<span class="number">-1</span>][j],f[i<span class="number">-1</span>][j-v[i]]+w[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;f[N][V]&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -198,6 +205,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -248,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://auzc.github.io/2023/02/24/%E9%9A%8F%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://auzc.github.io/2023/02/25/%E8%83%8C%E5%8C%85%E7%9B%B8%E5%85%B3/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -262,18 +280,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/02/24/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%B1%82%E6%9C%80%E5%B7%A6%E6%8E%A8%E5%AF%BC%E5%92%8C%E6%9C%80%E5%8F%B3%E6%8E%A8%E5%AF%BC%E4%BE%8B%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/02/25/Android/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          Android
         
       </div>
     </a>
   
   
-    <a href="/2023/02/22/Ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2023/02/25/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E6%9C%80%E5%B7%A6%E6%9C%80%E5%8F%B3%E6%8E%A8%E5%AF%BC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">编译原理最左最右推导</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -301,7 +319,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="随记" data-title="" data-url="http://auzc.github.io/2023/02/24/%E9%9A%8F%E8%AE%B0/"></div>
+	<div class="ds-thread" data-thread-key="背包相关" data-title="背包相关" data-url="http://auzc.github.io/2023/02/25/%E8%83%8C%E5%8C%85%E7%9B%B8%E5%85%B3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -324,8 +342,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://auzc.github.io/2023/02/24/%E9%9A%8F%E8%AE%B0/", 
-    sourceId: "随记",
+    url: "http://auzc.github.io/2023/02/25/%E8%83%8C%E5%8C%85%E7%9B%B8%E5%85%B3/", 
+    sourceId: "背包相关",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -334,7 +352,7 @@
   
 
   
-  <div id="SOHUCS" sid="随记" ></div> 
+  <div id="SOHUCS" sid="背包相关" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -485,6 +503,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
             
             <div class="clearfix"></div>

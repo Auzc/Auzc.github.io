@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-截断数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/">截断数组</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2023-02-13T03:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line">LL sum[<span class="number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    LL re=<span class="number">0</span>,temp=<span class="number">0</span>;    <span class="comment">//需要LL</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;sum[i];</span><br><span class="line">        sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(sum[n]%<span class="number">3</span>!=<span class="number">0</span>||n&lt;<span class="number">3</span>)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;0&quot;</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    LL averge=sum[n]/<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;    <span class="comment">//不要等于n，否则划分和为0的时候会多加</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(sum[i]==averge*<span class="number">2</span>)</span><br><span class="line">            re+=temp;</span><br><span class="line">        <span class="keyword">if</span>(sum[i]==averge)</span><br><span class="line">            temp++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;re&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3959/">3956. 截断数组 - AcWing题库</a></p>
+<p>给定一个长度为 n 的数组 a1,a2,…,an。</p>
+<p>现在，要将该数组从中间截断，得到三个<strong>非空</strong>子数组。</p>
+<p>要求，三个子数组内各元素之和都相等。</p>
+<p>请问，共有多少种不同的截断方法？</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 n。</p>
+<p>第二行包含 n 个整数 a1,a2,…,an。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示截断方法数量。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>前六个测试点满足 1≤n≤10。<br>所有测试点满足 1≤n≤105，−10000≤ai≤10000。</p>
+<h4 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">1 2 3 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入样例3："><a href="#输入样例3：" class="headerlink" title="输入样例3："></a>输入样例3：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例3："><a href="#输出样例3：" class="headerlink" title="输出样例3："></a>输出样例3：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/13/%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数分别相乘求和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -595,90 +690,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/12/%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/11/%E6%9E%90/">析</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/11/%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2023-01-11T08:46:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="滕王阁序"><a href="#滕王阁序" class="headerlink" title="滕王阁序"></a>滕王阁序</h2><p>豫章故郡<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-4">[注 1]</a>，洪都新府。星分翼轸，地接衡庐。襟三江而带五湖，控蛮荆而引瓯越。物华天宝，龙光射牛斗之墟；人杰地灵，徐孺下陈蕃之榻。雄州雾列，俊采星驰。台隍枕夷夏之交，宾主尽东南之美。都督阎公之雅望，棨戟遥临；宇文新州之懿范，襜帷暂驻。十旬休假，胜友如云；千里逢迎，高朋满座。腾蛟起凤，孟学士之词宗；紫电青霜，王将军之武库<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-5">[注 2]</a>。家君作宰，路出名区；童子何知，躬逢胜饯。</p>
-<p>时维九月，序属三秋。潦水尽而寒潭清，烟光凝而暮山紫。俨骖𬴂于上路，访风景于崇阿；临帝子之长洲，得天人之旧馆。层峦耸翠<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-6">[注 3]</a>，上出重霄；飞阁流丹<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-7">[注 4]</a>，下临无地。鹤汀凫渚，穷岛屿之萦回；桂殿兰宫，即冈峦之体势<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-8">[注 5]</a>。</p>
-<p>披绣闼，俯雕甍，山原旷其盈视，川泽纡其骇瞩。闾阎扑地，钟鸣鼎食之家；舸舰弥津<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-9">[注 6]</a>，青雀黄龙之舳<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-10">[注 7]</a>。云销雨霁，彩彻区明<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-11">[注 8]</a>。落霞与孤鹜齐飞，秋水共长天一色<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-12">[注 9]</a>。渔舟唱晚，响穷彭蠡之滨；雁阵惊寒，声断衡阳之浦。</p>
-<p>遥襟甫畅<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-13">[注 10]</a>，逸兴遄飞。爽籁发而清风生，纤歌凝而白云遏。睢园绿竹，气凌彭泽之樽；邺水朱华，光照临川之笔。四美具，二难并。穷睇眄于中天，极娱游于暇日。天高地迥，觉宇宙之无穷；兴尽悲来，识盈虚之有数。望长安于日下，目吴会于云间。地势极而南溟深，天柱高而北辰远。关山难越，谁悲失路之人？萍水相逢，尽是他乡之客。怀帝阍而不见，奉宣室以何年？</p>
-<p>嗟乎！时运不齐，命途多舛。冯唐易老，李广难封。屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时？所赖君子见机<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-14">[注 11]</a>，达人知命。老当益壮，宁移白首之心？穷且益坚，不坠青云之志。酌贪泉而觉爽，处涸辙以犹欢<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-15">[注 12]</a>。北海虽赊，扶摇可接；东隅已逝，桑榆非晚。孟尝高洁，空余报国之情；阮籍猖狂，岂效穷途之哭！</p>
-<p>勃，三尺微命，一介书生。无路请缨，等终军之弱冠；有怀投笔，慕宗悫之长风。舍簪笏于百龄，奉晨昏于万里。非谢家之宝树，接孟氏之芳邻。他日趋庭，叨陪鲤对；今兹捧袂，喜托龙门。杨意不逢，抚凌云而自惜；钟期既遇，奏流水以何惭？</p>
-<p>呜乎！胜地不常，盛筵难再；兰亭已矣，梓泽丘墟。临别赠言，幸承恩于伟饯；登高作赋，是所望于群公。敢竭鄙怀，恭疏短引；一言均赋，四韵俱成。请洒潘江，各倾陆海云尔：</p>
-<p>滕王高阁临江渚，佩玉鸣鸾罢歌舞。</p>
-<p>画栋朝飞南浦云，珠帘暮卷西山雨。</p>
-<p>闲云潭影日悠悠，物换星移几度秋。</p>
-<p>阁中帝子今何在？槛外长江空自流。<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F#cite_note-16">[4]</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/11/%E6%9E%90/">展开全文 >></a>
         </p>
       
 
@@ -1213,6 +1224,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
               </li>
             
             <div class="clearfix"></div>
