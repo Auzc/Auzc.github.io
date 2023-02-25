@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="http://auzc.github.io">
   <title>刷题统计 | Au&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第十三届蓝桥杯省赛C++B组 我去，第一道就写错了 首先是long long 相关问题，其次是超时（用除法）        刷题统计      题目    提交记录    讨论    题解    视频讲解  小明决定从下周一开始努力刷题准备蓝桥杯竞赛。 他计划周一至周五每天做 a 道题目，周六和周日每天做 b 道题目。 请你帮小明计算，按照计划他将在第几天实现做题数大于等于 n 题？ 输入格式输入">
+  <meta name="description" content="第十三届蓝桥杯省赛C++B组 我去，第一道就写错了 首先是long long 相关问题，其次是超时（用除法） #include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;int main()&amp;#123;    long long a,b,n;    cin&gt;&amp;gt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="刷题统计">
 <meta property="og:url" content="http://auzc.github.io/2023/02/25/%E5%88%B7%E9%A2%98%E7%BB%9F%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Au&#39;s Blogs">
-<meta property="og:description" content="第十三届蓝桥杯省赛C++B组 我去，第一道就写错了 首先是long long 相关问题，其次是超时（用除法）        刷题统计      题目    提交记录    讨论    题解    视频讲解  小明决定从下周一开始努力刷题准备蓝桥杯竞赛。 他计划周一至周五每天做 a 道题目，周六和周日每天做 b 道题目。 请你帮小明计算，按照计划他将在第几天实现做题数大于等于 n 题？ 输入格式输入">
+<meta property="og:description" content="第十三届蓝桥杯省赛C++B组 我去，第一道就写错了 首先是long long 相关问题，其次是超时（用除法） #include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;int main()&amp;#123;    long long a,b,n;    cin&gt;&amp;gt">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-25T09:37:54.000Z">
-<meta property="article:modified_time" content="2023-02-25T09:39:51.918Z">
+<meta property="article:modified_time" content="2023-02-25T09:50:37.007Z">
 <meta property="article:author" content="Au">
 <meta property="article:tag" content="C++">
+<meta property="article:tag" content="蓝桥杯">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Au&#39;s Blogs" type="application/atom+xml">
@@ -178,11 +179,7 @@
         <p>第十三届蓝桥杯省赛C++B组</p>
 <p>我去，第一道就写错了</p>
 <p>首先是long long 相关问题，其次是超时（用除法）</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a,b,n;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b&gt;&gt;n;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i=<span class="number">0</span>;</span><br><span class="line">    i+=<span class="number">7</span>*(n/(<span class="number">5</span>*a+<span class="number">2</span>*b));</span><br><span class="line">    sum+=n-n%(<span class="number">5</span>*a+<span class="number">2</span>*b);</span><br><span class="line">    <span class="keyword">for</span>(i++;sum&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">7</span>!=<span class="number">6</span>&amp;&amp;i%<span class="number">7</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">            sum+=a;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            sum+=b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;i<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="4402">
 <li>刷题统计</li>
@@ -238,6 +235,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
         		</li>
       		
 		</ul>
@@ -306,6 +307,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2023/02/25/%E4%BF%AE%E5%89%AA%E7%81%8C%E6%9C%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          修剪灌木
+        
+      </div>
+    </a>
   
   
     <a href="/2023/02/25/%E8%93%9D%E6%A1%A5%E6%9D%AF/" id="article-nav-older" class="article-nav-link-wrap">
@@ -529,6 +539,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">蓝桥杯</a>
               </li>
             
             <div class="clearfix"></div>

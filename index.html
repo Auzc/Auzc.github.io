@@ -152,6 +152,113 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="4403-修剪灌木" class="article article-type-4403  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/25/%E4%BF%AE%E5%89%AA%E7%81%8C%E6%9C%A8/">修剪灌木</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/25/%E4%BF%AE%E5%89%AA%E7%81%8C%E6%9C%A8/" class="archive-article-date">
+  	<time datetime="2023-02-25T09:48:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第十三届蓝桥杯省赛C++B组</p>
+<p>简单的题</p>
+<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302251753247.png"></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10010</span>;</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        a[i]=i*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)&#123;</span><br><span class="line">        a[i]=a[n-i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4403">
+<li>修剪灌木</li>
+</ol>
+<ul>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/4406/">题目</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/submission/4406/">提交记录</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/discussion/index/4406/1/">讨论</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/solution/4406/1/">题解</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/video/4406/">视频讲解</a></li>
+</ul>
+<p>爱丽丝要完成一项修剪灌木的工作。</p>
+<p>有 N 棵灌木整齐的从左到右排成一排。</p>
+<p>爱丽丝在每天傍晚会修剪一棵灌木，让灌木的高度变为 0 厘米。</p>
+<p>爱丽丝修剪灌木的顺序是从最左侧的灌木开始，每天向右修剪一棵灌木。</p>
+<p>当修剪了最右侧的灌木后，她会调转方向，下一天开始向左修剪灌木。</p>
+<p>直到修剪了最左的灌木后再次调转方向。</p>
+<p>然后如此循环往复。</p>
+<p>灌木每天从早上到傍晚会长高 1 厘米，而其余时间不会长高。</p>
+<p>在第一天的早晨，所有灌木的高度都是 0 厘米。爱丽丝想知道每棵灌木最高长到多高。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>一个正整数 N，含义如题面所述。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出 N 行，每行一个整数，第行表示从左到右第 i 棵树最高能长到多高。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>对于 30% 的数据，N≤10，<br>对于 100% 的数据，1&lt;N≤10000。</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">2</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/25/%E4%BF%AE%E5%89%AA%E7%81%8C%E6%9C%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="4402-刷题统计" class="article article-type-4402  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -175,11 +282,7 @@
         <p>第十三届蓝桥杯省赛C++B组</p>
 <p>我去，第一道就写错了</p>
 <p>首先是long long 相关问题，其次是超时（用除法）</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> a,b,n;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b&gt;&gt;n;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> i=<span class="number">0</span>;</span><br><span class="line">    i+=<span class="number">7</span>*(n/(<span class="number">5</span>*a+<span class="number">2</span>*b));</span><br><span class="line">    sum+=n-n%(<span class="number">5</span>*a+<span class="number">2</span>*b);</span><br><span class="line">    <span class="keyword">for</span>(i++;sum&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">7</span>!=<span class="number">6</span>&amp;&amp;i%<span class="number">7</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">            sum+=a;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            sum+=b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;i<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="4402">
 <li>刷题统计</li>
@@ -214,6 +317,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">蓝桥杯</a>
         		</li>
       		
 		</ul>
@@ -910,106 +1017,6 @@
 
 
   
-    <article id="post-差分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/15/%E5%B7%AE%E5%88%86/">差分</a>
-    </h1>
-  
-
-        
-        <a href="/2023/02/15/%E5%B7%AE%E5%88%86/" class="archive-article-date">
-  	<time datetime="2023-02-15T13:08:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="797">
-<li>差分</li>
-</ol>
-<ul>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/799/">题目</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/submission/799/">提交记录</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/discussion/index/799/1/">讨论</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/solution/799/1/">题解</a></li>
-<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/video/799/">视频讲解</a></li>
-</ul>
-<p>输入一个长度为 n 的整数序列。</p>
-<p>接下来输入 m 个操作，每个操作包含三个整数 l,r,c，表示将序列中 [l,r] 之间的每个数加上 c。</p>
-<p>请你输出进行完所有操作后的序列。</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含两个整数 n 和 m。</p>
-<p>第二行包含 n 个整数，表示整数序列。</p>
-<p>接下来 m 行，每行包含三个整数 l，r，c，表示一个操作。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，包含 n 个整数，表示最终序列。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n,m≤100000,<br>1≤l≤r≤n,<br>−1000≤c≤1000,<br>−1000≤整数序列中元素的值≤1000</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6 3</span><br><span class="line">1 2 2 1 2 1</span><br><span class="line">1 3 1</span><br><span class="line">3 5 1</span><br><span class="line">1 6 1</span><br></pre></td></tr></table></figure>
-
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 4 5 3 4 2</span><br></pre></td></tr></table></figure>
-
-<p>序列中间同时加，对序列内部两数之间的距离无影响，对两端有影响</p>
-<p>存储每两数之间的差值即可。</p>
-<p>b[l]+=c;<br> b[r+1]-=c;</p>
-<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302152111621.jpeg"></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> a[n+<span class="number">1</span>],b[n+<span class="number">1</span>];</span><br><span class="line">    a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">        b[i]=a[i]-a[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="type">int</span> l,r,c;</span><br><span class="line">        cin&gt;&gt;l&gt;&gt;r&gt;&gt;c;</span><br><span class="line">        b[l]+=c;</span><br><span class="line">        b[r+<span class="number">1</span>]-=c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        a[i]=a[i<span class="number">-1</span>]+b[i];</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/15/%E5%B7%AE%E5%88%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1144,6 +1151,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">蓝桥杯</a>
               </li>
             
             <div class="clearfix"></div>

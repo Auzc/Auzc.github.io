@@ -152,6 +152,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-差分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/15/%E5%B7%AE%E5%88%86/">差分</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/15/%E5%B7%AE%E5%88%86/" class="archive-article-date">
+  	<time datetime="2023-02-15T13:08:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="797">
+<li>差分</li>
+</ol>
+<ul>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/799/">题目</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/submission/799/">提交记录</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/discussion/index/799/1/">讨论</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/solution/799/1/">题解</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/video/799/">视频讲解</a></li>
+</ul>
+<p>输入一个长度为 n 的整数序列。</p>
+<p>接下来输入 m 个操作，每个操作包含三个整数 l,r,c，表示将序列中 [l,r] 之间的每个数加上 c。</p>
+<p>请你输出进行完所有操作后的序列。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含两个整数 n 和 m。</p>
+<p>第二行包含 n 个整数，表示整数序列。</p>
+<p>接下来 m 行，每行包含三个整数 l，r，c，表示一个操作。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，包含 n 个整数，表示最终序列。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n,m≤100000,<br>1≤l≤r≤n,<br>−1000≤c≤1000,<br>−1000≤整数序列中元素的值≤1000</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6 3</span><br><span class="line">1 2 2 1 2 1</span><br><span class="line">1 3 1</span><br><span class="line">3 5 1</span><br><span class="line">1 6 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 4 5 3 4 2</span><br></pre></td></tr></table></figure>
+
+<p>序列中间同时加，对序列内部两数之间的距离无影响，对两端有影响</p>
+<p>存储每两数之间的差值即可。</p>
+<p>b[l]+=c;<br> b[r+1]-=c;</p>
+<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302152111621.jpeg"></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> a[n+<span class="number">1</span>],b[n+<span class="number">1</span>];</span><br><span class="line">    a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">        b[i]=a[i]-a[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="type">int</span> l,r,c;</span><br><span class="line">        cin&gt;&gt;l&gt;&gt;r&gt;&gt;c;</span><br><span class="line">        b[l]+=c;</span><br><span class="line">        b[r+<span class="number">1</span>]-=c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        a[i]=a[i<span class="number">-1</span>]+b[i];</span><br><span class="line">        cout&lt;&lt;a[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/15/%E5%B7%AE%E5%88%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前缀和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -194,8 +294,6 @@
 
 <h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">17</span><br><span class="line">27</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
 
-
-
 <hr>
 <p>思路</p>
 <p>先求矩阵和</p>
@@ -204,7 +302,7 @@
 <p>矩阵相减出答案</p>
 <p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302152035815.png"></p>
 <p>cout&lt;&lt;sum[x2][y2]+sum[x1-1][y1-1]-sum[x1-1][y2]-sum[x2][y1-1]&lt;&lt;endl;</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m,q;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;</span><br><span class="line">    <span class="type">int</span> a[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    sum[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            cin&gt;&gt;a[i][j];</span><br><span class="line">            sum[i][j]=sum[i<span class="number">-1</span>][j]+sum[i][j<span class="number">-1</span>]-sum[i<span class="number">-1</span>][j<span class="number">-1</span>]+a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q--)&#123;</span><br><span class="line">        <span class="type">int</span> x1,y1,x2,y2;</span><br><span class="line">        cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2;</span><br><span class="line">        cout&lt;&lt;sum[x2][y2]+sum[x1<span class="number">-1</span>][y1<span class="number">-1</span>]-sum[x1<span class="number">-1</span>][y2]-sum[x2][y1<span class="number">-1</span>]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m,q;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;</span><br><span class="line">    <span class="type">int</span> a[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    sum[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            cin&gt;&gt;a[i][j];</span><br><span class="line">            sum[i][j]=sum[i<span class="number">-1</span>][j]+sum[i][j<span class="number">-1</span>]-sum[i<span class="number">-1</span>][j<span class="number">-1</span>]+a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q--)&#123;</span><br><span class="line">        <span class="type">int</span> x1,y1,x2,y2;</span><br><span class="line">        cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2;</span><br><span class="line">        cout&lt;&lt;sum[x2][y2]+sum[x1<span class="number">-1</span>][y1<span class="number">-1</span>]-sum[x1<span class="number">-1</span>][y2]-sum[x2][y1<span class="number">-1</span>]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -1035,89 +1133,6 @@
 
 
   
-    <article id="post-HashMap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/09/HashMap/">HashMap</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/09/HashMap/" class="archive-article-date">
-  	<time datetime="2023-01-09T05:13:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="哈希map"><a href="#哈希map" class="headerlink" title="哈希map"></a>哈希map</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="type">int</span>, <span class="type">int</span>&gt; umap = &#123; &#123;<span class="number">2</span>, <span class="number">10</span>&#125;,&#123;<span class="number">1</span>, <span class="number">20</span>&#125;,&#123;<span class="number">3</span>,<span class="number">30</span>&#125; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历unordered_map</span></span><br><span class="line"><span class="comment">//注意一个用指针一个用点</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> &amp;item : umap) &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; item.first &lt;&lt; <span class="string">&quot; -&gt; &quot;</span> &lt;&lt; item.second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = umap.begin();it != umap.end();++it)  &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;it-&gt;first&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;it-&gt;second&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;     </span><br><span class="line"></span><br><span class="line"><span class="comment">//插入元素</span></span><br><span class="line"><span class="comment">//一般插入</span></span><br><span class="line">umap.insert(<span class="built_in">pair</span>&lt;<span class="type">int</span>,<span class="type">int</span>&gt;(<span class="number">4</span>,<span class="number">9</span>));  </span><br><span class="line"><span class="comment">//数组的形式，如果存在就修改，否则插入</span></span><br><span class="line">umap[<span class="number">3</span>] = <span class="number">7</span>;           </span><br><span class="line">umap[<span class="number">5</span>]=<span class="number">99</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">//按key删除元素</span></span><br><span class="line">umap.erase(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//按迭代器删除元素</span></span><br><span class="line">umap.erase(umap.begin());</span><br><span class="line"></span><br><span class="line"><span class="comment">//按key查找元素</span></span><br><span class="line"><span class="keyword">auto</span> it = umap.find(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">if</span>(it != umap.end())&#123;   <span class="comment">//查找成功，修改其值</span></span><br><span class="line">    it-&gt;second=<span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;    <span class="comment">//查找失败，直接插入</span></span><br><span class="line">    umap[<span class="number">3</span>]=<span class="number">88</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="出现次数最多的数"><a href="#出现次数最多的数" class="headerlink" title="出现次数最多的数"></a>出现次数最多的数</h2><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3195/">3192. 出现次数最多的数 - AcWing题库</a></p>
-<h3 id="开大数组"><a href="#开大数组" class="headerlink" title="开大数组"></a>开大数组</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> a[<span class="number">10001</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> num,sum=<span class="number">0</span>,flag_a=<span class="number">100000</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;num;</span><br><span class="line">        a[num]++;</span><br><span class="line">        <span class="keyword">if</span>(a[num]==sum&amp;&amp;num&lt;flag_a)&#123;</span><br><span class="line">            flag_a=num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[num]&gt;sum)&#123;</span><br><span class="line">            flag_a=num;</span><br><span class="line">            sum=a[num];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;flag_a;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="哈希map-1"><a href="#哈希map-1" class="headerlink" title="哈希map"></a>哈希map</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> num,sum=<span class="number">0</span>,flag_a=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; mymap;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;num;</span><br><span class="line">        mymap[num]++;</span><br><span class="line">        <span class="keyword">if</span>(mymap[num]==sum&amp;&amp;num&lt;flag_a)&#123;</span><br><span class="line">            flag_a=num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(mymap[num]&gt;sum)&#123;</span><br><span class="line">            flag_a=num;</span><br><span class="line">            sum=mymap[num];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;flag_a;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CCF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/09/HashMap/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1252,6 +1267,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">编译原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">蓝桥杯</a>
               </li>
             
             <div class="clearfix"></div>
