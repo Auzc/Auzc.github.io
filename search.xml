@@ -4,11 +4,51 @@
   
     
     <entry>
+      <title>刷题统计</title>
+      <link href="/2023/02/25/%E5%88%B7%E9%A2%98%E7%BB%9F%E8%AE%A1/"/>
+      <url>/2023/02/25/%E5%88%B7%E9%A2%98%E7%BB%9F%E8%AE%A1/</url>
+      
+        <content type="html"><![CDATA[<p>第十三届蓝桥杯省赛C++B组</p><p>我去，第一道就写错了</p><p>首先是long long 相关问题，其次是超时（用除法）</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><ol start="4402"><li>刷题统计</li></ol><ul><li>   <a href="https://www.acwing.com/problem/content/description/4405/">题目</a></li><li>   <a href="https://www.acwing.com/problem/content/submission/4405/">提交记录</a></li><li>   <a href="https://www.acwing.com/problem/content/discussion/index/4405/1/">讨论</a></li><li>   <a href="https://www.acwing.com/problem/content/solution/4405/1/">题解</a></li><li>   <a href="https://www.acwing.com/problem/content/video/4405/">视频讲解</a></li></ul><p>小明决定从下周一开始努力刷题准备蓝桥杯竞赛。</p><p>他计划周一至周五每天做 a 道题目，周六和周日每天做 b 道题目。</p><p>请你帮小明计算，按照计划他将在第几天实现做题数大于等于 n 题？</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入一行包含三个整数 a,b 和 n。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数代表天数。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>对于 50% 的评测用例，1≤a,b,n≤106，<br>对于 100% 的评测用例，1≤a,b,n≤1018。</p><h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10 20 99</span><br></pre></td></tr></table></figure><h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>蓝桥杯</title>
+      <link href="/2023/02/25/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
+      <url>/2023/02/25/%E8%93%9D%E6%A1%A5%E6%9D%AF/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Android</title>
       <link href="/2023/02/25/Android/"/>
       <url>/2023/02/25/Android/</url>
       
-        <content type="html"><![CDATA[<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><h3 id="Android底部导航栏"><a href="#Android底部导航栏" class="headerlink" title="Android底部导航栏"></a>Android底部导航栏</h3><p><a href="https://auzc.github.io/2023/02/22/android%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F/">Android底部导航栏 | Au&#39;s Blogs</a></p><h3 id="drawable界面美化"><a href="#drawable界面美化" class="headerlink" title="drawable界面美化"></a>drawable界面美化</h3><p><a href="https://auzc.github.io/2023/02/22/Android-drawable%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">Android/drawable界面美化 | Au&#39;s Blogs</a></p><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h2><h3 id="DAL"><a href="#DAL" class="headerlink" title="DAL"></a>DAL</h3><p>DAL是什么，是什么文件夹吗</p><p>DAL 是数据访问层（Data Access Layer）的缩写，它是一种常用的软件设计模式，用于将数据存储和检索操作与业务逻辑分离。在 Android 应用中，可以使用 DAL 将数据库操作和数据模型的定义分离开来，从而提高代码的可维护性和可扩展性。</p><p>在 Android 中，DAL 通常不是一个文件夹或者一个特定的代码文件，而是一种设计模式，可以通过创建一个单独的类或者一组类来实现。通常情况下，DAL 类包含了以下几个组件：</p><ol><li>数据库帮助类（Database Helper）：用于创建和管理数据库的结构。</li><li>数据模型（Data Model）：用于表示应用程序需要存储的数据。</li><li>数据源（Data Source）：封装了对数据库的读写操作，提供了数据的增删改查接口。</li></ol><p>因此，在创建 DAL 类时，需要定义这三个组件，并将它们组织成一种良好的架构。在 Android 应用中，通常将这些组件放在不同的文件中，并将它们组织成一个单独的包或者模块。例如，在上面的示例代码中，UserDbHelper、UserContract 和 User 类组成了数据模型；UserDataSource 类则封装了对数据库的读写操作，并提供了数据的增删改查接口。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><h3 id="Android底部导航栏"><a href="#Android底部导航栏" class="headerlink" title="Android底部导航栏"></a>Android底部导航栏</h3><p><a href="https://auzc.github.io/2023/02/22/android%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F/">Android底部导航栏 | Au&#39;s Blogs</a></p><h3 id="drawable界面美化"><a href="#drawable界面美化" class="headerlink" title="drawable界面美化"></a>drawable界面美化</h3><p><a href="https://auzc.github.io/2023/02/22/Android-drawable%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">Android/drawable界面美化 | Au&#39;s Blogs</a></p><h3 id="更换字体包"><a href="#更换字体包" class="headerlink" title="更换字体包"></a>更换字体包</h3><p><a href="https://gojun.me/posts/android-change-font/">Android 如何快速全局更换字体 ｜ GoJun</a></p><p><a href="https://www.makefont.com/index.html">造字工房</a></p><h2 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h2><h3 id="DAL"><a href="#DAL" class="headerlink" title="DAL"></a>DAL</h3><p>DAL是什么，是什么文件夹吗</p><p>DAL 是数据访问层（Data Access Layer）的缩写，它是一种常用的软件设计模式，用于将数据存储和检索操作与业务逻辑分离。在 Android 应用中，可以使用 DAL 将数据库操作和数据模型的定义分离开来，从而提高代码的可维护性和可扩展性。</p><p>在 Android 中，DAL 通常不是一个文件夹或者一个特定的代码文件，而是一种设计模式，可以通过创建一个单独的类或者一组类来实现。通常情况下，DAL 类包含了以下几个组件：</p><ol><li>数据库帮助类（Database Helper）：用于创建和管理数据库的结构。</li><li>数据模型（Data Model）：用于表示应用程序需要存储的数据。</li><li>数据源（Data Source）：封装了对数据库的读写操作，提供了数据的增删改查接口。</li></ol><p>因此，在创建 DAL 类时，需要定义这三个组件，并将它们组织成一种良好的架构。在 Android 应用中，通常将这些组件放在不同的文件中，并将它们组织成一个单独的包或者模块。例如，在上面的示例代码中，UserDbHelper、UserContract 和 User 类组成了数据模型；UserDataSource 类则封装了对数据库的读写操作，并提供了数据的增删改查接口。</p>]]></content>
       
       
       
@@ -29,7 +69,7 @@
       <link href="/2023/02/25/%E8%83%8C%E5%8C%85%E7%9B%B8%E5%85%B3/"/>
       <url>/2023/02/25/%E8%83%8C%E5%8C%85%E7%9B%B8%E5%85%B3/</url>
       
-        <content type="html"><![CDATA[<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> n = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> v[n],w[n],f[n][n];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> N,V;</span><br><span class="line">    cin&gt;&gt;N&gt;&gt;V;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        cin&gt;&gt;v[i]&gt;&gt;w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=V;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;v[i])&#123;</span><br><span class="line">                f[i][j]=f[i<span class="number">-1</span>][j];</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                f[i][j]=<span class="built_in">max</span>(f[i<span class="number">-1</span>][j],f[i<span class="number">-1</span>][j-v[i]]+w[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;f[N][V]&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> n = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> v[n],w[n],f[n][n];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> N,V;</span><br><span class="line">    cin&gt;&gt;N&gt;&gt;V;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        cin&gt;&gt;v[i]&gt;&gt;w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=V;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;v[i])&#123;</span><br><span class="line">                f[i][j]=f[i<span class="number">-1</span>][j];</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                f[i][j]=<span class="built_in">max</span>(f[i<span class="number">-1</span>][j],f[i<span class="number">-1</span>][j-v[i]]+w[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;f[N][V]&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       

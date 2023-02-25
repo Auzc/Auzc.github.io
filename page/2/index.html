@@ -152,6 +152,244 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前缀和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/15/%E5%89%8D%E7%BC%80%E5%92%8C/">前缀和</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/15/%E5%89%8D%E7%BC%80%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2023-02-15T12:30:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/798/">https://www.acwing.com/problem/content/798/</a></p>
+<ol start="796">
+<li>子矩阵的和</li>
+</ol>
+<ul>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/798/">题目</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/submission/798/">提交记录</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/discussion/index/798/1/">讨论</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/solution/798/1/">题解</a></li>
+<li>   <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/video/798/">视频讲解</a></li>
+</ul>
+<p>输入一个 n 行 m 列的整数矩阵，再输入 q 个询问，每个询问包含四个整数 x1,y1,x2,y2，表示一个子矩阵的左上角坐标和右下角坐标。</p>
+<p>对于每个询问输出子矩阵中所有数的和。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含三个整数 n，m，q。</p>
+<p>接下来 n 行，每行包含 m 个整数，表示整数矩阵。</p>
+<p>接下来 q 行，每行包含四个整数 x1,y1,x2,y2，表示一组询问。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>共 q 行，每行输出一个询问的结果。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n,m≤1000,<br>1≤q≤200000,<br>1≤x1≤x2≤n,<br>1≤y1≤y2≤m,<br>−1000≤矩阵内元素的值≤1000</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 4 3</span><br><span class="line">1 7 2 4</span><br><span class="line">3 6 2 8</span><br><span class="line">2 1 2 3</span><br><span class="line">1 1 2 2</span><br><span class="line">2 1 3 4</span><br><span class="line">1 3 3 4</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">17</span><br><span class="line">27</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>思路</p>
+<p>先求矩阵和</p>
+<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302152034272.png"></p>
+<p>sum[i][j]=sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1]+a[i][j];</p>
+<p>矩阵相减出答案</p>
+<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302152035815.png"></p>
+<p>cout&lt;&lt;sum[x2][y2]+sum[x1-1][y1-1]-sum[x1-1][y2]-sum[x2][y1-1]&lt;&lt;endl;</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m,q;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;</span><br><span class="line">    <span class="type">int</span> a[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    sum[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            cin&gt;&gt;a[i][j];</span><br><span class="line">            sum[i][j]=sum[i<span class="number">-1</span>][j]+sum[i][j<span class="number">-1</span>]-sum[i<span class="number">-1</span>][j<span class="number">-1</span>]+a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q--)&#123;</span><br><span class="line">        <span class="type">int</span> x1,y1,x2,y2;</span><br><span class="line">        cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2;</span><br><span class="line">        cout&lt;&lt;sum[x2][y2]+sum[x1<span class="number">-1</span>][y1<span class="number">-1</span>]-sum[x1<span class="number">-1</span>][y2]-sum[x2][y1<span class="number">-1</span>]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/15/%E5%89%8D%E7%BC%80%E5%92%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Easy01-CCF" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/15/Easy01-CCF/">Easy01_ CCF</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/15/Easy01-CCF/" class="archive-article-date">
+  	<time datetime="2023-02-15T04:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://118.190.20.162/view.page?gpid=T153">计算机软件能力认证考试系统</a></p>
+<table>
+<thead>
+<tr>
+<th>试题编号：</th>
+<th>202209-1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>试题名称：</td>
+<td>如此编码</td>
+</tr>
+<tr>
+<td>时间限制：</td>
+<td>1.0s</td>
+</tr>
+<tr>
+<td>内存限制：</td>
+<td>512.0MB</td>
+</tr>
+</tbody></table>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> a[n+<span class="number">1</span>],b[n+<span class="number">1</span>],c[n+<span class="number">1</span>];</span><br><span class="line">    c[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">        c[i]=c[i<span class="number">-1</span>]*a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line"><span class="comment">//计算b的关键部分，与提示内容对应</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        b[i+<span class="number">1</span>]=(m%c[i+<span class="number">1</span>]-sum)/c[i];</span><br><span class="line">        sum+=c[i]*b[i+<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cout&lt;&lt;b[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关键提示</p>
+<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302151249023.png"></p>
+<table>
+<thead>
+<tr>
+<th>试题编号：</th>
+<th>202209-2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>试题名称：</td>
+<td>何以包邮？</td>
+</tr>
+<tr>
+<td>时间限制：</td>
+<td>1.0s</td>
+</tr>
+<tr>
+<td>内存限制：</td>
+<td>512.0MB</td>
+</tr>
+</tbody></table>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">33</span>, M = <span class="number">300010</span>;</span><br><span class="line"><span class="type">int</span> n,x;</span><br><span class="line"><span class="type">int</span> a[N],b[M];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;x;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">        sum+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> m=sum-x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=m;j&gt;=a[i];j--)</span><br><span class="line">                b[j]=<span class="built_in">max</span>(b[j],b[j-a[i]]+a[i]);</span><br><span class="line">    cout&lt;&lt;sum-b[m]&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://raw.githubusercontent.com/Auzc/BlogImage/main/img/202302151318281.png"></p>
+<p>思路想到了</p>
+<p>正着求最小，倒着就是求最大</p>
+<p>背包问题</p>
+<p>O（nm）</p>
+<p>n本书，m价值</p>
+<p>b[j]=max(b[j],b[j-a[i]]+a[i]);</p>
+<p>满分做法二，类似于：潜水员：<br>状态表示 f(i,j)</p>
+<p>集合：表示从前 i 个物品中选，且总体积至少是 j 的所有选法的集合。<br>属性：最小值。<br>本质是 𝟶𝟷 背包问题，初始化：f0=0，其余为正无穷。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">3e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n, m, f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> f);</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (n -- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> v, w;</span><br><span class="line">        cin &gt;&gt; v;</span><br><span class="line">        w = v;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = m; j &gt;= <span class="number">0</span>; j -- )</span><br><span class="line">            f[j] = <span class="built_in">min</span>(f[j], f[<span class="built_in">max</span>(<span class="number">0</span>, j - v)] + w);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; f[m] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CCF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/15/Easy01-CCF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-截断数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -851,224 +1089,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/09/HashMap/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数的表示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/09/%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/">数的表示</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/09/%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/" class="archive-article-date">
-  	<time datetime="2023-01-09T05:12:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="取值范围："><a href="#取值范围：" class="headerlink" title="取值范围："></a>取值范围：</h3><p>unsigned int 0～4294967295</p>
-<p>int 2147483648～2147483647 9位</p>
-<p>unsigned long 0～4294967295</p>
-<p>long 2147483648～2147483647</p>
-<p>long long的最大值：9223372036854775807 19位</p>
-<p>long long的最小值：-9223372036854775808</p>
-<p>unsigned long long的最大值：18446744073709551615</p>
-<p>__int64的最大值：9223372036854775807</p>
-<p>__int64的最小值：-9223372036854775808</p>
-<p>unsigned __int64的最大值：18446744073709551615</p>
-<h3 id="无穷大："><a href="#无穷大：" class="headerlink" title="无穷大："></a>无穷大：</h3><p>对于int类型的数据，如果我们想用一个数来表示无穷大，使得它比输入的所有的数都大，可以选择<strong>0x3f3f3f3f</strong> 或 <strong>0x7fffffff</strong></p>
-<p>0x3f3f3f3f 数值为 1061109567</p>
-<p>0x7fffffff 数值为2139062143</p>
-<p>负无穷大则可以用 -0x3f3f3f3f 或 -0x7fffffff</p>
-<p>-0x3f3f3f3f 数值为-1061109567</p>
-<p>-0x7fffffff 数值为-2139062143</p>
-<p>在题目中常使用 0x3f3f3f3f，因为0x7fffffff 容易越界，定义全局变量</p>
-<p>const int inf = 0x3f3f3f3f;</p>
-<h3 id="PI的表示："><a href="#PI的表示：" class="headerlink" title="PI的表示："></a>PI的表示：</h3><p>方法1：const double PI = 3.1415926535898;</p>
-<p>方法2：**#define PI acos(-1)**</p>
-<p>建议使用方法2，如下：</p>
-<p>#include<br>#include<br>#include&lt;math.h&gt;<br>#include&lt;stdlib.h&gt;<br>using namespace std;<br>int main()<br>{<br>cout&lt;&lt;acos(-1)&lt;&lt;endl;<br>return 0;</p>
-<p>}</p>
-<h3 id="char型："><a href="#char型：" class="headerlink" title="char型："></a>char型：</h3><p>char ch;</p>
-<p>输入： cin&gt;&gt;ch; 或scanf(“%c”,&amp;ch);</p>
-<p>scanf(“%c”,&amp;ch); 不常用，容易出错，比如下面的例子：</p>
-<p>cin&gt;&gt;ch;</p>
-<p>cout&lt;&lt;ch&lt;&lt;endl;</p>
-<p>scanf(“%c”,&amp;ch);</p>
-<p>cout&lt;&lt;ch&lt;&lt;endl;</p>
-<p>上面四句话，运行结果第二个cout输出的不是我们原来输入的字符，因为如果第一次输入字符后，按了回车，那么第二次输入的就是回车，也就是scanf(“%c”,&amp;ch);把回车吸收了。所以如果要正确使用，要在中间加上一句getchar();</p>
-<p>cin&gt;&gt;ch;</p>
-<p>cout&lt;&lt;ch&lt;&lt;endl;</p>
-<p>getchar();</p>
-<p>scanf(“%c”,&amp;ch);</p>
-<p>cout&lt;&lt;ch&lt;&lt;endl;</p>
-<p>对于字符数组 char chs[10];</p>
-<p>输入： cin&gt;&gt;chs; 或scanf(“%s”,chs);</p>
-<p>注意：用字符数组存放字符串时，如果一个字符串中存在空格，cin&gt;&gt;chs;不可以存空格</p>
-<p>gets(chs);可以存空格.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CCF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/09/%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Acwing周赛" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/08/Acwing%E5%91%A8%E8%B5%9B/">Acwing周赛</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/08/Acwing%E5%91%A8%E8%B5%9B/" class="archive-article-date">
-  	<time datetime="2023-01-08T14:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="AcWing周赛"><a href="#AcWing周赛" class="headerlink" title="AcWing周赛"></a>AcWing周赛</h1><p>思路复盘与记录</p>
-<h2 id="AcWing第62场周赛笔记"><a href="#AcWing第62场周赛笔记" class="headerlink" title="AcWing第62场周赛笔记"></a>AcWing第62场周赛笔记</h2><h3 id="三个元素"><a href="#三个元素" class="headerlink" title="三个元素"></a>三个元素</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4503/">题目详情</a></p>
-<h4 id="个人暴力代码（输入顺便比较）"><a href="#个人暴力代码（输入顺便比较）" class="headerlink" title="个人暴力代码（输入顺便比较）"></a>个人暴力代码（输入顺便比较）</h4><p>输入时找到最小，遍历找两个不一样，排序</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> a[n];</span><br><span class="line">    <span class="type">int</span> min_a=<span class="number">1e9</span>,min_a_i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        <span class="keyword">if</span>(min_a&gt;a[i])&#123;</span><br><span class="line">            min_a=a[i];</span><br><span class="line">            min_a_i=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> temp_i1;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]!=min_a)&#123;</span><br><span class="line">            temp_i1=i;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a[i]!=min_a&amp;&amp;a[i]!=a[temp_i1])&#123;</span><br><span class="line">                    <span class="keyword">if</span>(a[i]&gt;a[temp_i1])&#123;</span><br><span class="line">                        <span class="built_in">cout</span>&lt;&lt;min_a_i+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;temp_i1+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;i+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="built_in">cout</span>&lt;&lt;min_a_i+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;i+<span class="number">1</span>&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;temp_i1+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;-1 -1 -1&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="容器代码（-map-size-）"><a href="#容器代码（-map-size-）" class="headerlink" title="容器代码（ map.size() ）"></a>容器代码（ map.size() ）</h4><p>map容器操作</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pos;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        pos[x] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pos.size() &lt; <span class="number">3</span>) <span class="built_in">puts</span>(<span class="string">&quot;-1 -1 -1&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> [k, v]: pos) res.push_back(v);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i ++ )</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; res[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="收集卡牌"><a href="#收集卡牌" class="headerlink" title="收集卡牌"></a>收集卡牌</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4504/">题目详情</a></p>
-<h4 id="个人编码记录（判断基数变动）"><a href="#个人编码记录（判断基数变动）" class="headerlink" title="个人编码记录（判断基数变动）"></a>个人编码记录（判断基数变动）</h4><p>开数组，check，集齐一套，判断基数加一（节省遍历减一时间），倒着检查可能会取巧。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="type">int</span> check[n+<span class="number">1</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">int</span> base=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        check[a[i]]++;</span><br><span class="line">        <span class="type">int</span> flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=n;j&gt;=<span class="number">1</span>;j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[j]==base)&#123;</span><br><span class="line">                flag=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">            base++;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;1&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;0&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="yxc代码（一种判断全套方法）"><a href="#yxc代码（一种判断全套方法）" class="headerlink" title="yxc代码（一种判断全套方法）"></a>yxc代码（一种判断全套方法）</h4><p>思路：每录一个，先记录在卡牌数组里，如果记录前为0，不同牌类数（tot）++，当不同牌类数==n，打印1，遍历减去一套牌，当一种牌数量降为0，tot–。</p>
-<h4 id="复合代码"><a href="#复合代码" class="headerlink" title="复合代码"></a>复合代码</h4><p>结合下，不用遍历减一套，统计下套数为基数，不过还需要遍历。</p>
-<h2 id="AcWing第63场周赛笔记"><a href="#AcWing第63场周赛笔记" class="headerlink" title="AcWing第63场周赛笔记"></a>AcWing第63场周赛笔记</h2><h3 id="字符串消除"><a href="#字符串消除" class="headerlink" title="字符串消除"></a>字符串消除</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4507/">题目详情</a></p>
-<h4 id="个人栈代码（类括号抵消问题）"><a href="#个人栈代码（类括号抵消问题）" class="headerlink" title="个人栈代码（类括号抵消问题）"></a>个人栈代码（类括号抵消问题）</h4><p>栈应用 stack push pop top</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">string</span> str;</span><br><span class="line">    getline(<span class="built_in">cin</span>,str);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="type">char</span>&gt; s;</span><br><span class="line">    s.push(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    s.push(str[<span class="number">0</span>]);</span><br><span class="line">    <span class="type">char</span> temp=s.top();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;str.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp=s.top();</span><br><span class="line">        s.push(str[i]);</span><br><span class="line">        <span class="keyword">if</span>(s.top()==temp)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            s.pop();</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(count%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;No&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Yes&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="string操作代码（-pop-back-）"><a href="#string操作代码（-pop-back-）" class="headerlink" title="string操作代码（ pop_back() ）"></a>string操作代码（ pop_back() ）</h4><p>string也可以pop</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> str, stk;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> c: str)</span><br><span class="line">        <span class="keyword">if</span> (stk.back() == c)</span><br><span class="line">        &#123;</span><br><span class="line">            stk.pop_back();</span><br><span class="line">            res ++ ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> stk += c;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (res % <span class="number">2</span>) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">练习赛</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Acwing</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/08/Acwing%E5%91%A8%E8%B5%9B/">展开全文 >></a>
         </p>
       
 
