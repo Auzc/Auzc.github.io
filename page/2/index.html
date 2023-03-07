@@ -152,6 +152,172 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Ubuntu安装图形化界面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/">Ubuntu安装图形化界面</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/" class="archive-article-date">
+  	<time datetime="2023-02-25T07:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Ubuntu 14</strong></p>
+<p>此处以安装GNOME桌面环境为例，步骤如下：</p>
+<ol>
+<li><p>通过管理终端连接Linux实例，详情请参见<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/71529.htm">连接方式概述ECS远程连接操作指南</a>。</p>
+</li>
+<li><p>执行以下命令，更新软件源。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure></li>
+<li><p>依次执行以下命令，安装GNOME桌面环境。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">apt-get install x-<span class="variable language_">window</span>-system-core</span><br><span class="line">apt-get install gnome-core</span><br></pre></td></tr></table></figure></li>
+<li><p>执行以下命令，启动图形化桌面。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">startx</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭当前终端连接，通过ECS管理控制台的VNC连接实例，请参见<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25433.htm">通过密码认证登录Linux实例</a>，确认图形化桌面环境安装成功。</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/25/Ubuntu%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android-drawable界面美化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/22/Android-drawable%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">Android/drawable界面美化</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/22/Android-drawable%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2023-02-22T08:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>圆形头像框剪裁代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">        userProfileImage = view.findViewById(R.id.user_profile_image);</span><br><span class="line">button_user_nickname = view.findViewById(R.id.button_user_nickname);</span><br><span class="line"></span><br><span class="line"><span class="type">Bitmap</span> <span class="variable">bitmap</span> <span class="operator">=</span> BitmapFactory.decodeResource(getResources(), R.drawable.cr7);</span><br><span class="line"><span class="type">Bitmap</span> <span class="variable">circleBitmap</span> <span class="operator">=</span> Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line"><span class="type">BitmapShader</span> <span class="variable">shader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BitmapShader</span>(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);</span><br><span class="line"><span class="type">Paint</span> <span class="variable">paint</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Paint</span>();</span><br><span class="line">paint.setShader(shader);</span><br><span class="line"><span class="type">Canvas</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Canvas</span>(circleBitmap);</span><br><span class="line">c.drawCircle(bitmap.getWidth() / <span class="number">2f</span>, bitmap.getHeight() / <span class="number">2f</span>, bitmap.getWidth() / <span class="number">2f</span>, paint);</span><br><span class="line">userProfileImage.setImageBitmap(circleBitmap);</span><br></pre></td></tr></table></figure>
+
+<p>圆形头像框</p>
+<p>circular_border.xml</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">&quot;oval&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:width</span>=<span class="string">&quot;4dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:color</span>=<span class="string">&quot;@color/border_color&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/22/Android-drawable%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-android底部导航栏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -922,187 +1088,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/24/%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86%EF%BC%88%E4%BA%8C%E8%BF%9B%E5%88%B6%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-取整" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/24/C-%E5%8F%96%E6%95%B4/">C++取整</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/24/C-%E5%8F%96%E6%95%B4/" class="archive-article-date">
-  	<time datetime="2023-01-24T05:00:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>#include &lt;math.h&gt; double floor(double</strong>  <em>x</em> <strong>);</strong>   </p>
-<p><strong>float floorf(float</strong> <em>x</em><strong>);<br>long double floorl(long double</strong> <em>x</em><strong>);</strong></p>
-<p>double floor(double x);</p>
-<p>double ceil(double x);</p>
-<p>使用floor函数。floor(x)返回的是小于或等于x的最大整数。<br>如：     floor(10.5) == 10    floor(-10.5) == -11</p>
-<p>使用ceil函数。ceil(x)返回的是大于x的最小整数。<br>如：     ceil(10.5) == 11    ceil(-10.5) ==-10</p>
-<p>    floor()是向负无穷大舍入，floor(-10.5) == -11；<br>ceil()是向正无穷大舍入，ceil(-10.5) == -10</p>
-<p><a target="_blank" rel="noopener" href="http://www.diybl.com/course/3_program/c++/cppjs/20090403/163994.html">不得不说点：/ % 四舍五入 向上取整（ceil()） 向下取整（floor）</a></p>
-<p> 1. /</p>
-<p>    //Test “/“<br>    cout &lt;&lt; “Test &quot;/&quot;!” &lt;&lt; endl;<br>    cout &lt;&lt; “7   / 2   = “ &lt;&lt; 7/2 &lt;&lt; endl;      //3<br>    cout &lt;&lt; “7   / 2.0 = “ &lt;&lt; 7/2.0 &lt;&lt; endl;    //3.5<br>    cout &lt;&lt; “7.0 / 2   = “ &lt;&lt; 7.0/2 &lt;&lt; endl;    //3.5<br>    cout &lt;&lt; “7.0 / 2.0 = “ &lt;&lt; 7.0/2.0 &lt;&lt; endl; //3.5<br>    cout &lt;&lt; “7   / 3   = “ &lt;&lt; 7/3 &lt;&lt; endl;      //2<br>    cout &lt;&lt; endl;</p>
-<ol start="2">
-<li><p>%<br>    //Test “%”<br>    cout &lt;&lt; “Test &quot;%&quot;!” &lt;&lt; endl;<br>    cout &lt;&lt; “9   % 3   = “ &lt;&lt; 9%3 &lt;&lt; endl;      //0<br>    cout &lt;&lt; “9   % 4   = “ &lt;&lt; 9%4 &lt;&lt; endl;      //1<br>    //cout &lt;&lt; “9.0 % 3   = “ &lt;&lt; 9.0%3 &lt;&lt; endl;<br>    //cout &lt;&lt; “9   % 3.0 = “ &lt;&lt; 9%3.0 &lt;&lt; endl;<br>    cout &lt;&lt; endl;</p>
-</li>
-<li><p>四舍五入<br>    //Test round()<br>    cout &lt;&lt; “Test &quot;四舍五入&quot;!” &lt;&lt; endl;<br>    double dRoundA = 1.4;<br>    double dRoundB = 1.6;<br>    double dRoundLowA = -1.4;<br>    double dRoundLowB = -1.6;<br>    double dRoundLowC = 0.0;<br>    cout &lt;&lt; dRoundA &lt;&lt; “ = “ &lt;&lt; RoundEx(dRoundA) &lt;&lt; endl;         //1<br>    cout &lt;&lt; dRoundB &lt;&lt; “ = “ &lt;&lt; RoundEx(dRoundB) &lt;&lt; endl;         //2<br>    cout &lt;&lt; dRoundLowA &lt;&lt; “ = “ &lt;&lt; RoundEx(dRoundLowA) &lt;&lt; endl;   //-1<br>    cout &lt;&lt; dRoundLowB &lt;&lt; “ = “ &lt;&lt; RoundEx(dRoundLowB) &lt;&lt; endl;   //-2<br>    cout &lt;&lt; dRoundLowC &lt;&lt; “ = “ &lt;&lt; RoundEx(dRoundLowC) &lt;&lt; endl;   //0<br>    cout &lt;&lt; endl;</p>
-</li>
-</ol>
-<p>double RoundEx(const double&amp; dInput)<br>{<br>    double dIn = dInput;<br>    if (dInput &gt;= 0.0)    //???<br>    {<br>        return int(dIn + 0.5);<br>    } <br>    else<br>    {<br>        return int(dIn - 0.5);<br>    }<br>}</p>
-<ol start="4">
-<li><p>ceil() 向上取整<br>    //Test ceil() 向上取整<br>    cout &lt;&lt; “Test ceil() 向上取整!” &lt;&lt; endl; <br>    cout &lt;&lt; “ceil 1.2 = “ &lt;&lt; ceil(1.2) &lt;&lt; endl;      //2<br>    cout &lt;&lt; “ceil 1.8 = “ &lt;&lt; ceil(1.8) &lt;&lt; endl;      //2<br>    cout &lt;&lt; “ceil -1.2 = “ &lt;&lt; ceil(-1.2) &lt;&lt; endl;    //-1<br>    cout &lt;&lt; “ceil -1.8 = “ &lt;&lt; ceil(-1.8) &lt;&lt; endl;    //-1<br>    cout &lt;&lt; “ceil 0.0 = “ &lt;&lt; ceil(0.0) &lt;&lt; endl;      //0<br>    cout &lt;&lt; endl;</p>
-</li>
-<li><p>floor() 向下取整<br>    //Test floor() 向下取整<br>    cout &lt;&lt; “Test floor() 向下取整!” &lt;&lt; endl;<br>    cout &lt;&lt; “floor 1.2 = “ &lt;&lt; floor(1.2) &lt;&lt; endl;    //1<br>    cout &lt;&lt; “floor 1.8 = “ &lt;&lt; floor(1.8) &lt;&lt; endl;    //1<br>    cout &lt;&lt; “floor -1.2 = “ &lt;&lt; floor(-1.2) &lt;&lt; endl; //-2<br>    cout &lt;&lt; “floor -1.8 = “ &lt;&lt; floor(-1.8) &lt;&lt; endl; //-2<br>    cout &lt;&lt; “floor 0.0 = “ &lt;&lt; floor(0.0) &lt;&lt; endl;    //0<br>    cout &lt;&lt; endl;</p>
-</li>
-</ol>
-<p>16.1.21:标红的部分需要记住，便于理解记忆</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/24/C-%E5%8F%96%E6%95%B4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-打印浮点数精度问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/12/%E6%89%93%E5%8D%B0%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/">打印浮点数精度问题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/12/%E6%89%93%E5%8D%B0%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-01-12T08:23:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="C-如何保留2位小数输出"><a href="#C-如何保留2位小数输出" class="headerlink" title="C++如何保留2位小数输出"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/stacktrace/p/5142470.html">C++如何保留2位小数输出</a></h2><p>cout&lt;&lt;setiosflags(ios::fixed)&lt;&lt;setprecision(2);//需要头文件#include <iomanip></iomanip></p>
-<p>然后再输出实数类型变量即可以保留2位小数输出了，当然你要保留三位小数，setprecision(3)就行。</p>
-<p>setprecision是指设置输出精度，当没有</p>
-<p>cout&lt;&lt;setiosflags(ios::fixed)</p>
-<p>时，输出格式是数据的有效位数，例如</p>
-<p>float a = 123.666;<br>cout&lt;&lt;setprecision(5)&lt;&lt;a;</p>
-<p>将输出123.67（注意这里，它会四舍五入）。如果setprecision里的参数小于整数位数，将以指数形式输出，例如</p>
-<p>float a = 123.666;<br>cout&lt;&lt;setprecision(2)&lt;&lt;a;</p>
-<p>将输出1.2e+002。</p>
-<p>setiosflags(ios::fixed)是指以固定的浮点显示，当setiosflags(ios::fixed)和serprecision(n)两个一起用时就表示保留n位小数输出。这里还要注意，每次输出只要设置一次就行了，因为这两个的作用范围是后续对象，而不是仅对后一个对象起作用。</p>
-<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%.2lf&quot;</span>,num);</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/12/%E6%89%93%E5%8D%B0%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
